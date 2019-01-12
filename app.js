@@ -71,8 +71,8 @@ $('.pic').attr('src', currentNode.images[0])
   else
     desc1 = currentNode.decisions[1].description
     
-        $('#left').html($("<a></a>").attr("onclick", "choice(0)").text(desc0));
-        $('#right').html($("<a></a>").attr("onclick", "choice(1)").text(desc1));
+        $('#left').html($("<a></a>").attr("onclickd", "choice(0)").text(desc0));
+        $('#right').html($("<a></a>").attr("onclickd", "choice(1)").text(desc1));
 
     
   //  $('#left').wrapInner('<a onclick="choice(0)">' + currentNode.decisions[0] + '</a>');
