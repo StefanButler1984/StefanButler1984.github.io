@@ -71,12 +71,12 @@ $('.pic').attr('src', currentNode.images[0])
   else
     desc1 = currentNode.decisions[1].description
     
-        $('#zero').html($("<a></a>").attr("onclick", "choice(0)").text(desc0));
-        $('#one').html($("<a></a>").attr("onclick", "choice(1)").text(desc1));
+        $('#left').html($("<a></a>").attr("onclick", "choice(0)").text(desc0));
+        $('#right').html($("<a></a>").attr("onclick", "choice(1)").text(desc1));
 
     
-  //  $('#zero').wrapInner('<a onclick="choice(0)">' + currentNode.decisions[0] + '</a>');
-  //  $('#one').wrapInner('<a onclick="choice(1)">' + currentNode.decisions[1] + '</a>');
+  //  $('#left').wrapInner('<a onclick="choice(0)">' + currentNode.decisions[0] + '</a>');
+  //  $('#right').wrapInner('<a onclick="choice(1)">' + currentNode.decisions[1] + '</a>');
 
   setTimeout(function(){
     $('#background').show();

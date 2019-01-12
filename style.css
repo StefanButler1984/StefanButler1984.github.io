@@ -4,9 +4,9 @@ a{cursor:crosshair}
 html{
 background-color: black;
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
-    font-family: fantasy;
+    font-family: "ZX Spectrum";
     text-transform: uppercase;
 
 
@@ -34,13 +34,33 @@ margin-left:25px;
 .pic {
     vertical-align: middle;
     display: inline-block;
-    width:90%;
+    width:100vh;
+	
 }
 
 
-#header { }
+#header { width: 100%;}
 
-#footer span{
-    text-align: center;
+#footer div{
+    text-align: left;
     width: 50%;
+	display:block;
 }
+.helper {
+    display: inline-block;
+    /*height: 25%;*/
+    vertical-align: middle;}
+	#container1{width:90%; margin:auto;/*object-fit: contain*/ padding-top:90%; position:relative}
+
+#container{/*object-fit: contain*/ 	/*width: 80vw;
+    height: 80vh;*/position: relative;
+  top: 48%;
+  transform: translateY(-50%);}
+#controls{width:100%; margin:auto;}
+
+#left{float:left;width:49%;text-align:left; }
+#right{float:right;width:49%;text-align:right; }
+#center{margin:0 auto;width:1%;}
+
+
+
