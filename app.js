@@ -7,25 +7,26 @@ var currentNode = getURLParam('node',location.search)
 if(universe == null)
   universe = 'ad7cbr'
 
-$.get( "https://www.reddit.com/r/Bandersnatch/comments/" + universe +".json", function( data ) {
-  window.data = data;
+$.get( "./data.json", function( data ) {
+  window.nodes = data;
+/*
   _.each(data[1].data.children, function(c){
 
     try{
       c.data.body = c.data.body.replaceAll('&amp;#x200B;','')
       var obj = JSON.parse(c.data.body);
-      if(typeof c.data.replies.data !== 'undefined')
-        obj.replies = c.data.replies.data.children;
+      //if(typeof c.data.replies.data !== 'undefined')
+        //obj.replies = c.data.replies.data.children;
     nodes.push(obj);
     } catch(ex){}
     });
-  
+  */
   if(currentNode == null){
     currentNode = "root"
   }
     
   currentNodeId = currentNode;
-  
+  //console.log(JSON.stringify(nodes));
    currentNode = decodeURI(currentNode);
    currentNode = _.find(nodes, function(node){return node.nodeId.toLowerCase() == currentNode.toLowerCase()});
   
