@@ -68,6 +68,16 @@ margin-left:25px;
 width:100vh;
 	
 }
+
+.audio{
+	    position: absolute;
+    left: 3%;
+    bottom: 1%;
+    z-index: 5;
+    width: 6%;
+    float: left;
+}
+
 /* Portrait */
 @media screen and (orientation:portrait) {
 .pic {
@@ -76,10 +86,26 @@ width:100vh;
 	
 	
 }
+
+
+.audio{
+
+    bottom: -15%;
+
+}
+
 html {font-size: 2.5em;}
 }
 /* Landscape */
 @media screen and (orientation:landscape) {
+	
+	
+.audio{
+
+    bottom: 1%;
+
+}
+
 .pic {
 
     width:100vh;

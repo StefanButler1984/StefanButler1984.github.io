@@ -1,10 +1,20 @@
 
-setTimeout(function(){
-	document.getElementById("backgroundMusic").play();
+window.audioPlaying = false;
+function audioToggle(){
+	audioPlaying = !audioPlaying;
+	a = document.getElementById("backgroundMusic")
+	if(audioPlaying) {
+		
+		a.play(); a.volume=1;
+		$('.audio').attr('src', "./images/audio-on.png")
+	}
+		else {
+			a.volume=0;
+		$('.audio').attr('src', "./images/audio-off.png")
 
-	
-})
-
+		}
+			
+}
 var nodes = [];
 var root = null;
 var universe = getURLParam('universe',location.search)
