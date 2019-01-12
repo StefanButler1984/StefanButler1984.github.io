@@ -56,7 +56,7 @@ margin-left:25px;
     height: 80vh;*/position: relative;
   top: 48%;
   transform: translateY(-50%);}
-#controls{width:93%; margin:auto;}
+#controls{width:93%; margin:auto;margin-top:10px;}
 
 #left{float:left;width:49%;text-align:left; }
 #right{float:right;width:49%;text-align:right; }
@@ -74,7 +74,9 @@ width:100vh;
 
     width:100%;
 	
+	
 }
+html {font-size: 2.5em;}
 }
 /* Landscape */
 @media screen and (orientation:landscape) {
