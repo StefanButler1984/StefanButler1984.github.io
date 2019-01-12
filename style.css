@@ -56,7 +56,7 @@ margin-left:25px;
     height: 80vh;*/position: relative;
   top: 48%;
   transform: translateY(-50%);}
-#controls{width:100%; margin:auto;}
+#controls{width:93%; margin:auto;}
 
 #left{float:left;width:49%;text-align:left; }
 #right{float:right;width:49%;text-align:right; }
