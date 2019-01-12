@@ -1,9 +1,14 @@
 
+setTimeout(function(){
+	document.getElementById("backgroundMusic").play();
+
+	
+})
+
 var nodes = [];
 var root = null;
 var universe = getURLParam('universe',location.search)
 var currentNode = getURLParam('node',location.search)
-
 if(universe == null)
   universe = 'ad7cbr'
 
