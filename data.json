@@ -1,12 +1,12 @@
 [
 
-{"nodeId":"root","header":"Puny Human!!! Will you worship me?","images":["https://i.kinja-img.com/gawker-media/image/upload/s--78YDr9B6--/c_scale,f_auto,fl_progressive,q_80,w_800/otz2frt6bqteyt4zfnmj.png"],"decisions":{"0":"Deny Pax","1":"Worship Pax"}},
+{"nodeId":"root","header":"Puny Human!!! Will you worship me?","images":["./images/1.png"],"decisions":{"0":"Deny Pax","1":"Worship Pax"}},
 
-{"nodeId":"deny pax","header":"You deny pax?","images":["https://cdn.vox-cdn.com/thumbor/ipkTOlSme5tR9CQptSw9Tzn3rEM=/0x0:1440x900/1200x0/filters:focal(0x0:1440x900):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/13654516/Screen_Shot_2018_12_28_at_10.12.55_AM.png","image2.png"],"decisions":{"0":{"description":"Deny pax","goto":"Deny pax2"},"1":"Worship Pax"}},
+{"nodeId":"deny pax","header":"You deny pax?","images":["./images/1.png","image2.png"],"decisions":{"0":{"description":"Deny pax","goto":"Deny pax2"},"1":"Worship Pax"}},
 
 {"nodeId":"Fap","header":"","images":["https://i.kym-cdn.com/entries/icons/original/000/002/276/fap-meme.jpg"],"decisions":{"0":"","1":{"description":"fap","goto":"worship pax"}}},
 
-{"nodeId":"worship pax","header":"I will eat your face off !!!","images":["https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/demon-1546429980.jpg"],"decisions":{"0":"Run","1":{"description":"Fight","goto":"Death"}}},
+{"nodeId":"worship pax","header":"I will eat your face off !!!","images":["./images/3.jpg"],"decisions":{"0":"Run","1":{"description":"Fight","goto":"Death"}}},
 
 {"nodeId":"error","header":"","images":["https://i.imgur.com/BskzumA.png"],"decisions":{"0":"","1":"Go Back"}},
 
