@@ -5,11 +5,12 @@ function audioToggle(){
 	a = document.getElementById("backgroundMusic")
 	if(audioPlaying) {
 		
-		a.play(); a.volume=1;
+		a.play(); //a.volume=1;
 		$('.audio').attr('src', "./images/audio-on.png")
 	}
 		else {
-			a.volume=0;
+			//a.volume=0;
+			a.pause();
 		$('.audio').attr('src', "./images/audio-off.png")
 
 		}
