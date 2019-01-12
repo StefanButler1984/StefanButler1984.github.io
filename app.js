@@ -1,9 +1,4 @@
-setTimeout(function(){
-		a = document.getElementById("backgroundMusic")
 
-			$('#musicSource').attr('src', '/sound/Diamond_Hop.mp3')
-			a.load();a.play();
-		},5000)
 window.audioPlaying = false;
 function audioToggle(){
 	audioPlaying = !audioPlaying;
