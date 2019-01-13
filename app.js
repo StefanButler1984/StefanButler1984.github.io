@@ -127,7 +127,7 @@ fade = function(i){
 						},fadeTimeout)					
 					},2)
 				},fadeTimeout)
-			},fadeTimeout)
+			},250)
 			
 		}
 
@@ -140,7 +140,7 @@ fade = function(i){
 setTimeout(function(){
 	fade(0);
 
-})
+},2000)
 
 String.prototype.replaceAll = function(search, replacement) {
     var target = this;
