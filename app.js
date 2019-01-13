@@ -75,6 +75,8 @@ else if (currentNode.topChild.score < child.score) currentNode.topChild = child
   
   */
 $('.pic').attr('src', currentNode.images[0])
+$('.pic2').attr('src', currentNode.images[1])
+
   
   $('#header').html(currentNode.header);
   
@@ -104,6 +106,27 @@ $('.pic').attr('src', currentNode.images[0])
   },200)
 
 });
+
+window.firstImage = 0;
+window.secondImage = 1;
+fade = function(){
+	
+				$('.pic').addClass('fade')
+
+	
+
+				setTimeout(function(){
+					var placeholder = secondImage;
+					secondImage = firstImage;
+					firstImage = placeholder;
+						$('.pic').attr('src', currentNode.images[firstImage])
+						$('.pic2').attr('src', currentNode.images[secondImage])
+									$('.pic').removeClass('fade')
+
+				},250)
+	
+
+}
 
 String.prototype.replaceAll = function(search, replacement) {
     var target = this;

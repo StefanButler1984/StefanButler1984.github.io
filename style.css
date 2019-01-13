@@ -62,7 +62,7 @@ margin-left:25px;
 #right{float:right;width:49%;text-align:right; }
 #center{margin:0 auto;width:1%;}
 
-.pic {
+.pic, .pic2 {
     vertical-align: middle;
     display: inline-block;
 width:100vh;
@@ -78,9 +78,30 @@ width:100vh;
     float: left;
 }
 
+
+
+
+
+
+.fade {
+   opacity: 0;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   }
+
+
+
+
+
+
+
+
+
+
 /* Portrait */
 @media screen and (orientation:portrait) {
-.pic {
+.pic, .pic2 {
 
     width:100%;
 	
@@ -106,7 +127,7 @@ html {font-size: 2.5em;}
 
 }
 
-.pic {
+.pic, .pic2{
 
     width:100vh;
 	
