@@ -107,7 +107,7 @@ $('.pic2').attr('src', currentNode.images[1])
 
 });
 
-fadeTimeout = 2000;
+fadeTimeout = 1300;
 fade = function(i){
 	
 
@@ -125,7 +125,7 @@ fade = function(i){
 						setTimeout(function(){
 							fade(i+1)
 						},fadeTimeout)					
-					},200)
+					},500)
 				},fadeTimeout)
 			},250)
 			
