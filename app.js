@@ -91,7 +91,7 @@ $.get( "./data.json", function( data ) {
 
 });
 
-fadeTimeout = 1300;
+fadeTimeout = 2000;
 fadeTransition = function(callback, i){
 	//transition image
 	$('.pic2').attr('src', currentNode.images[0])
