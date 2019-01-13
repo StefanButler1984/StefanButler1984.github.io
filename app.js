@@ -27,109 +27,120 @@ var currentNode = getURLParam('node',location.search)
 if(universe == null)
   universe = 'ad7cbr'
 
+
+function setCurrentNode(name){
+	if(name == null){
+		name = "root";
+		  window.currentNode = _.find(nodes, function(node){return node.nodeId.toLowerCase() == name.toLowerCase()});
+		  $('.pic').attr('src', currentNode.images[0])
+		$('.pic2').attr('src', currentNode.images[1])
+
+	}
+	
+	$('#left').html($("<a></a>").attr("onclick", "").text());
+	$('#right').html($("<a></a>").attr("onclick", "").text());
+	
+    if(name.toLowerCase() == "go back"){
+		currentNode = previousNode;
+	}
+	else{
+	  window.currentNode = _.find(nodes, function(node){return node.nodeId.toLowerCase() == name.toLowerCase()});
+	  if(currentNode == null || typeof currentNode === 'undefined'){
+		 currentNode = _.find(nodes, function(node){return node.nodeId == 'error'})
+	  }
+
+	}
+	
+	$('#header').html(currentNode.header);
+
+
+	
+	
+	 fadeTransition(function(){
+		   
+		var desc0 = "";
+		  
+		if(typeof currentNode.decisions[0] == "string")
+			desc0 = currentNode.decisions[0];
+		else
+			desc0 = currentNode.decisions[0].description
+		  
+		var desc1 = "";
+
+		if(typeof currentNode.decisions[1] == "string")
+			desc1 = currentNode.decisions[1];
+		else
+			desc1 = currentNode.decisions[1].description
+			
+		$('#left').html($("<a></a>").attr("onclick", "choice(0)").text(desc0));
+		$('#right').html($("<a></a>").attr("onclick", "choice(1)").text(desc1));
+
+		  
+	 })
+
+    
+  
+}
+
 $.get( "./data.json", function( data ) {
   window.nodes = data;
-/*
-  _.each(data[1].data.children, function(c){
-
-    try{
-      c.data.body = c.data.body.replaceAll('&amp;#x200B;','')
-      var obj = JSON.parse(c.data.body);
-      //if(typeof c.data.replies.data !== 'undefined')
-        //obj.replies = c.data.replies.data.children;
-    nodes.push(obj);
-    } catch(ex){}
-    });
-  */
-  if(currentNode == null){
-    currentNode = "root"
-  }
-    
-  currentNodeId = currentNode;
-  //console.log(JSON.stringify(nodes));
-   currentNode = decodeURI(currentNode);
-   currentNode = _.find(nodes, function(node){return node.nodeId.toLowerCase() == currentNode.toLowerCase()});
-  
-  if(currentNode == null || typeof currentNode === 'undefined'){
-    currentNode = _.find(nodes, function(node){return node.nodeId == 'error'})
-  }
-  else{
-    currentNode.nodeId = currentNodeId;
-
-  }
-  
-  
-  currentNode.topChild = null;
-  
-  /*
-  _.each(currentNode.replies, function(child){
-child=child.data;
-    try{
-        if(currentNode.topChild==null) currentNode.topChild = child;
-else if (currentNode.topChild.score < child.score) currentNode.topChild = child
-      
-      currentNode.topChild = JSON.parse(currentNode.topChild.body)
-
-    } catch(ex){}
-    });
-  
-  */
-$('.pic').attr('src', currentNode.images[0])
-$('.pic2').attr('src', currentNode.images[1])
 
   
-  $('#header').html(currentNode.header);
+  setCurrentNode(null)
   
-      var desc0 = "";
-  if(typeof currentNode.decisions[0] == "string")
-    desc0 = currentNode.decisions[0];
-  else
-    desc0 = currentNode.decisions[0].description
-  
-        var desc1 = "";
-
-  if(typeof currentNode.decisions[1] == "string")
-    desc1 = currentNode.decisions[1];
-  else
-    desc1 = currentNode.decisions[1].description
-    
-        $('#left').html($("<a></a>").attr("onclickd", "choice(0)").text(desc0));
-        $('#right').html($("<a></a>").attr("onclickd", "choice(1)").text(desc1));
-
-    
-  //  $('#left').wrapInner('<a onclick="choice(0)">' + currentNode.decisions[0] + '</a>');
-  //  $('#right').wrapInner('<a onclick="choice(1)">' + currentNode.decisions[1] + '</a>');
-
-  setTimeout(function(){
-    $('#background').show();
-
-  },200)
 
 });
 
 fadeTimeout = 1300;
-fade = function(i){
+fadeTransition = function(callback, i){
+	//transition image
+	$('.pic2').attr('src', currentNode.images[0])
+	$('.pic').addClass('fade')
+	setTimeout(function(){
+		fade(callback,i)
+	}, fadeTimeout)
+
+}
+fade = function(callback, i){
 	
 
+	
+		
+			$('.pic').removeClass('fade')
+
+		if(typeof i === 'undefined')
+		i = 0;
+
 		$('.pic').attr('src', currentNode.images[i])
-		if(typeof currentNode.images[i+1] !== 'undefined'){
-			$('.pic2').attr('src', currentNode.images[i+1])
+		
+		i++;
+		if(typeof currentNode.images[i] !== 'undefined'){
+			$('.pic2').attr('src', currentNode.images[i])
 			setTimeout(function(){
 				$('.pic').addClass('fade')
 				setTimeout(function(){
-					$('.pic').attr('src', currentNode.images[i+1])
+					$('.pic').attr('src', currentNode.images[i])
 
 					setTimeout(function(){
 						$('.pic').removeClass('fade')
 
+		if(typeof currentNode.images[i+1] !== 'undefined'){
 						setTimeout(function(){
-							fade(i+1)
-						},fadeTimeout)					
-					},500)
+							fade(callback,i)
+						},2)
+		}
+else{callback();}		
+					},5)
 				},fadeTimeout)
 			},250)
 			
 		}
+		else{
+			callback();
+		}
+		
+
+	
 
 
 
@@ -137,10 +148,7 @@ fade = function(i){
 	
 
 }
-setTimeout(function(){
-	fade(0);
 
-},2000)
 
 String.prototype.replaceAll = function(search, replacement) {
     var target = this;
@@ -154,10 +162,9 @@ function choice(c){
   else
     goto = currentNode.decisions[c].goto
   
-  if(currentNode.nodeId.toLowerCase() == "error" || goto.toLowerCase() == "go back")
-    location.href = "http://"+location.host + "/?universe=" + universe + "&node=" +getURLParam('p',location.search) ;
-else
-location.href = "http://"+location.host + "/?universe=" + universe + "&node=" + goto + "&p=" + currentNode.nodeId;
+  setCurrentNode(goto);
+  
+
 
 }
 
