@@ -125,7 +125,7 @@ fade = function(i){
 						setTimeout(function(){
 							fade(i+1)
 						},fadeTimeout)					
-					},2)
+					},200)
 				},fadeTimeout)
 			},250)
 			
