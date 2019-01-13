@@ -124,9 +124,12 @@ fade = function(){
 															setTimeout(function(){
 																															$('.pic').removeClass('fade')
 
+setTimeout(function(){
+
 																						$('.pic2').attr('src', currentNode.images[secondImage])
 
-															})
+															},1000)
+															},1000)
 
 				},1000)
 	
