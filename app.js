@@ -119,19 +119,14 @@ fade = function(){
 					var placeholder = secondImage;
 					secondImage = firstImage;
 					firstImage = placeholder;
-						$('.pic').attr('src', currentNode.images[firstImage])
-
-															setTimeout(function(){
-																															$('.pic').removeClass('fade')
-
-setTimeout(function(){
-
-																						$('.pic2').attr('src', currentNode.images[secondImage])
-
-															},1000)
-															},1000)
-
-				},1000)
+					$('.pic').attr('src', currentNode.images[firstImage])
+					setTimeout(function(){
+						$('.pic').removeClass('fade')
+						setTimeout(function(){
+							$('.pic2').attr('src', currentNode.images[secondImage])
+						},250)
+					},250)
+				},250)
 	
 
 }
