@@ -123,7 +123,7 @@ fade = function(){
 						$('.pic2').attr('src', currentNode.images[secondImage])
 									$('.pic').removeClass('fade')
 
-				},250)
+				},500)
 	
 
 }
