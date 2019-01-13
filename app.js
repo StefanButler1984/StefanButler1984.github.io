@@ -124,10 +124,10 @@ fade = function(i){
 
 						setTimeout(function(){
 							fade(i+1)
-						},2)					
+						},fadeTimeout)					
 					},2)
 				},fadeTimeout)
-			},250)
+			},fadeTimeout)
 			
 		}
 
