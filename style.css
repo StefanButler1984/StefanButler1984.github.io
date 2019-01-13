@@ -88,7 +88,6 @@ width:100vh;
    transition: opacity 1.2s ease-in-out;
    -moz-transition: opacity 1.2s ease-in-out;
    -webkit-transition: opacity 1.2s ease-in-out;
-   -webkit-transition: -webkit-transform 1.2s;
    }
 
 
