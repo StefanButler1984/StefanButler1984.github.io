@@ -107,29 +107,40 @@ $('.pic2').attr('src', currentNode.images[1])
 
 });
 
-window.firstImage = 0;
-window.secondImage = 1;
-fade = function(){
+fadeTimeout = 2000;
+fade = function(i){
 	
+
+		$('.pic').attr('src', currentNode.images[i])
+		if(typeof currentNode.images[i+1] !== 'undefined'){
+			$('.pic2').attr('src', currentNode.images[i+1])
+			setTimeout(function(){
 				$('.pic').addClass('fade')
-
-	
-
 				setTimeout(function(){
-					var placeholder = secondImage;
-					secondImage = firstImage;
-					firstImage = placeholder;
-					$('.pic').attr('src', currentNode.images[firstImage])
+					$('.pic').attr('src', currentNode.images[i+1])
+
 					setTimeout(function(){
 						$('.pic').removeClass('fade')
+
 						setTimeout(function(){
-							$('.pic2').attr('src', currentNode.images[secondImage])
-						},250)
-					},250)
-				},250)
+							fade(i+1)
+						},2)					
+					},2)
+				},fadeTimeout)
+			},250)
+			
+		}
+
+
+
+				
 	
 
 }
+setTimeout(function(){
+	fade(0);
+
+})
 
 String.prototype.replaceAll = function(search, replacement) {
     var target = this;

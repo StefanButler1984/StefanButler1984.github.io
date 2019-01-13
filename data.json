@@ -1,6 +1,6 @@
 [
 
-{"nodeId":"root","header":"Puny Human!!! Will you worship me?","images":["./images/corridor/Corridor_Right.png","./images/corridor/Corridor_Left.png"],"decisions":{"0":"Deny Pax","1":"Worship Pax"}},
+{"nodeId":"root","header":"Puny Human!!! Will you worship me?","images":["./images/corridor/Corridor_Right.png","./images/corridor/Corridor_Left.png","./images/corridor/Corridor_Right.png","./images/corridor/Corridor_Left.png","./images/corridor/Corridor_Right.png","./images/corridor/Corridor_Left.png","./images/corridor/Corridor_Right.png"],"decisions":{"0":"Deny Pax","1":"Worship Pax"}},
 
 {"nodeId":"deny pax","header":"You deny pax?","images":["./images/1.png","image2.png"],"decisions":{"0":{"description":"Deny pax","goto":"Deny pax2"},"1":"Worship Pax"}},
 
