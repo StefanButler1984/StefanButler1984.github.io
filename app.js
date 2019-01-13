@@ -120,9 +120,10 @@ fade = function(){
 					secondImage = firstImage;
 					firstImage = placeholder;
 						$('.pic').attr('src', currentNode.images[firstImage])
-															$('.pic').removeClass('fade')
 
 															setTimeout(function(){
+																															$('.pic').removeClass('fade')
+
 																						$('.pic2').attr('src', currentNode.images[secondImage])
 
 															})
