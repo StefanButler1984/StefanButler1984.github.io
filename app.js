@@ -122,7 +122,7 @@ fade = function(callback, i){
 					$('.pic').attr('src', currentNode.images[i])
 
 					setTimeout(function(){
-						$('.pic').removeClass('fade')
+						//$('.pic').removeClass('fade')
 
 		if(typeof currentNode.images[i+1] !== 'undefined'){
 						setTimeout(function(){
