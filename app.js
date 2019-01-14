@@ -55,7 +55,7 @@ function setCurrentNode(name){
 
 
 	
-	
+	$('.pic2').removeClass('hidden');
 	 fadeNext(function(){
 		   
 		var desc0 = "";
@@ -82,7 +82,9 @@ function setCurrentNode(name){
   
 }
 
-$.get( "./data.json", function( data ) {
+
+var newGame = function(){
+	$.get( "./data.json", function( data ) {
   window.nodes = data;
 
   
@@ -90,6 +92,13 @@ $.get( "./data.json", function( data ) {
   
 
 });
+	
+}
+
+setTimeout(function(){
+	//start();
+},3000)
+
 
 fadeTimeout = 2000;
 fadeNext = function(callback, i){
