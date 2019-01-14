@@ -115,11 +115,14 @@ fade = function(imageSrc, callback){
 		$('.pic').addClass('fade');
 		setTimeout(function(){
 			$('.pic').attr('src', imageSrc)
-			$('.pic').removeClass('fade')
-
 			setTimeout(function(){
-				callback()
+				$('.pic').removeClass('fade')
+
+				setTimeout(function(){
+					callback()
+				},100)
 			},100)
+			
 		}, fadeTimeout)
 	},100)
 
