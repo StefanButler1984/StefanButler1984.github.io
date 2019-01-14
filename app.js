@@ -56,7 +56,7 @@ function setCurrentNode(name){
 
 	
 	
-	 fadeTransition(function(){
+	 fadeNext(function(){
 		   
 		var desc0 = "";
 		  
@@ -92,16 +92,40 @@ $.get( "./data.json", function( data ) {
 });
 
 fadeTimeout = 2000;
-fadeTransition = function(callback, i){
-	//transition image
-	$('.pic2').attr('src', currentNode.images[0])
-	$('.pic').addClass('fade')
+fadeNext = function(callback, i){
+
+	if(typeof i === 'undefined')
+		i = 0;
+	
+	if(typeof currentNode.images[i] !== 'undefined'){
+		fade(currentNode.images[i], function(){
+			fadeNext(callback, i+1)
+		})	
+	}
+	else{
+		callback();
+	}
+	
+}
+
+fade = function(imageSrc, callback){
+	
+	$('.pic2').attr('src', imageSrc)
 	setTimeout(function(){
-		fade(callback,i)
-	}, fadeTimeout)
+		$('.pic').addClass('fade');
+		setTimeout(function(){
+			$('.pic').attr('src', imageSrc)
+			$('.pic').removeClass('fade')
+
+			setTimeout(function(){
+				callback()
+			},100)
+		}, fadeTimeout)
+	},100)
 
 }
-fade = function(callback, i){
+
+fade2 = function(callback, i){
 	
 
 	

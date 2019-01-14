@@ -84,10 +84,9 @@ width:100vh;
 
 
 .fade {
-   opacity: 0;
-   transition: opacity 1.2s ease-in-out;
-   -moz-transition: opacity 1.2s ease-in-out;
-   -webkit-transition: opacity 1.2s ease-in-out;
+visibility: hidden;
+                       opacity: 0;
+                       transition: visibility 0s .5s, opacity .5s linear;	
    }
 
 
