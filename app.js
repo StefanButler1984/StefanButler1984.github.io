@@ -54,9 +54,11 @@ function setCurrentNode(name){
 	$('#header').html(currentNode.header);
 	
 		if(name == "root"){
+setTimeout(function(){
+						$('.pic2').removeClass('hidden');
 
+},700)
 		setTimeout(function(){
-					$('.pic2').removeClass('hidden');
 
 				fade();
 
