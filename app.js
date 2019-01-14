@@ -34,9 +34,25 @@ function setCurrentNode(name){
 		  window.currentNode = _.find(nodes, function(node){return node.nodeId.toLowerCase() == name.toLowerCase()});
 		  $('.pic').attr('src', currentNode.images[0])
 		$('.pic2').attr('src', currentNode.images[1])
+		
+		
+		//give enough time for initial images to load
+		setTimeout(function(){
+					setCurrentNode2(name);
+
+		},1500)
 
 	}
+	else{
+		
+		setCurrentNode2(name)
+	}
 	
+  
+}
+
+function setCurrentNode2(name){
+
 	$('#left').html($("<a></a>").attr("onclick", "").text());
 	$('#right').html($("<a></a>").attr("onclick", "").text());
 	
@@ -56,8 +72,8 @@ function setCurrentNode(name){
 
 	
 	$('.pic2').removeClass('hidden');
-	 fadeNext(function(){
-		   
+	fadeNext(function(){
+	   
 		var desc0 = "";
 		  
 		if(typeof currentNode.decisions[0] == "string")
@@ -76,10 +92,7 @@ function setCurrentNode(name){
 		$('#right').html($("<a></a>").attr("onclick", "choice(1)").text(desc1));
 
 		  
-	 })
-
-    
-  
+	}) 
 }
 
 
@@ -120,30 +133,27 @@ fadeNext = function(callback, i){
 
 fade = function(imageSrc, callback){
 	
-	$('.pic2').attr('src', imageSrc)
-	setTimeout(function(){
-		$('.pic').addClass('fade');
-		setTimeout(function(){
-			var handler = function(){
-				
+	var handler = function(){
+				$(".pic").unbind('load', handler);
+				$('.pic').removeClass('fade')
 
 				setTimeout(function(){
-					$(".pic").unbind('load', handler);
-				$('.pic').removeClass('fade')
+
 					callback()
-				},100)
+				},1000)
 				
 			}
-			 $(".pic").on('load', handler);
-			 setTimeout(function(){
-				 			$('.pic').attr('src', imageSrc)
+	
+	
+	
+	$(".pic").on('load', handler);
+	$('.pic2').attr('src', imageSrc)
+	$('.pic').addClass('fade');
+	setTimeout(function(){
+		
+		 $('.pic').attr('src', imageSrc)
 
-			 },100)
-
-			
-			
-		}, fadeTimeout)
-	},100)
+	}, fadeTimeout)
 
 }
 
