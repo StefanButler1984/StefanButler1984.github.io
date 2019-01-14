@@ -2,6 +2,8 @@
 
 {"nodeId":"root","header":"What is this place root","images":["./images/corridor/2_far.png","./images/corridor/2_close.png"],"decisions":{"0":{"description":"Left","goto":"Left1"},"1":{"description":"Right","goto":"Right1"}}},
 
+{"nodeId":"rootCopy","header":"What is this place rootCopy","images":["./images/corridor/2_far.png","./images/corridor/2_close.png"],"decisions":{"0":{"description":"Left","goto":"Left1"},"1":{"description":"Right","goto":"Right1"}}},
+
 {"nodeId":"Left1","header":"What is this place Left1","images":["./images/corridor/right_far.png","./images/corridor/right_close.png","./images/corridor/2_far.png","./images/corridor/2_close.png"],"decisions":{"0":{"description":"Left","goto":"Left2"},"1":{"description":"Right","goto":"left1right"}}},
 
 {"nodeId":"Right1","header":"What is this place Right1","images":["./images/corridor/left_far.png","./images/corridor/left_close.png","./images/corridor/2_far.png","./images/corridor/2_close.png"],"decisions":{"0":{"description":"Left","goto":"right1left"},"1":{"description":"Right","goto":"rightright"}}},
@@ -14,7 +16,7 @@
 
 {"nodeId":"LeftTurnedaroundRight","header":"What is this place LeftTurnedaroundRight","images":["./images/corridor/left_far.png","./images/corridor/left_close.png","./images/corridor/right_left_far.png"],"decisions":{"0":{"description":"Forward","goto":"Right1b"},"1":{"description":"Right","goto":"home"}}},
 
-{"nodeId":"home","header":"What is this place home","images":["./images/corridor/dead_far.png","./images/corridor/dead_close.png"],"decisions":{"0":{"Forward":"Left","goto":"undefined"},"1":{"description":"Turnaround","goto":"root"}}},
+{"nodeId":"home","header":"What is this place home","images":["./images/corridor/dead_far.png","./images/corridor/dead_close.png"],"decisions":{"0":{"Forward":"Left","goto":"undefined"},"1":{"description":"Turnaround","goto":"rootCopy"}}},
 
 {"nodeId":"rightright","header":"What is this place rightright","images":["./images/corridor/left_far.png","./images/corridor/left_close.png","./images/corridor/dead_far.png","./images/corridor/dead_close.png"],"decisions":{"0":{"description":"","goto":"undefined"},"1":{"description":"Turnaround","goto":"rightrightturnaround"}}},
 

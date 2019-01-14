@@ -28,31 +28,16 @@ if(universe == null)
   universe = 'ad7cbr'
 
 
+
+
 function setCurrentNode(name){
-	if(name == null){
-		name = "root";
-		  window.currentNode = _.find(nodes, function(node){return node.nodeId.toLowerCase() == name.toLowerCase()});
-		  $('.pic').attr('src', currentNode.images[0])
+	if(name == "root"){
+		window.currentNode = _.find(nodes, function(node){return node.nodeId.toLowerCase() == name.toLowerCase()});
+		$('.pic').attr('src', currentNode.images[0])
 		$('.pic2').attr('src', currentNode.images[1])
-		
-		
-		//give enough time for initial images to load
-		setTimeout(function(){
-					setCurrentNode2(name);
-
-		},1500)
-
-	}
-	else{
-		
-		setCurrentNode2(name)
+		$('.pic2').removeClass('hidden');
 	}
 	
-  
-}
-
-function setCurrentNode2(name){
-
 	$('#left').html($("<a></a>").attr("onclick", "").text());
 	$('#right').html($("<a></a>").attr("onclick", "").text());
 	
@@ -68,10 +53,35 @@ function setCurrentNode2(name){
 	}
 	
 	$('#header').html(currentNode.header);
-
-
 	
-	$('.pic2').removeClass('hidden');
+		if(name == "root"){
+
+		setTimeout(function(){
+				fade();
+
+		},1000)
+		}
+		else{
+			fade();
+		}
+	
+}
+
+
+var newGame = function(){
+	audioToggle();
+	$.get( "./data.json", function( data ) {
+  window.nodes = data;
+
+  
+  setCurrentNode("root")
+  
+
+});
+	
+}
+
+var fade = function(){
 	fadeNext(function(){
 	   
 		var desc0 = "";
@@ -93,26 +103,8 @@ function setCurrentNode2(name){
 
 		  
 	}) 
-}
-
-
-var newGame = function(){
-	audioToggle();
-	$.get( "./data.json", function( data ) {
-  window.nodes = data;
-
-  
-  setCurrentNode(null)
-  
-
-});
 	
 }
-
-setTimeout(function(){
-	//start();
-},3000)
-
 
 fadeTimeout = 2000;
 fadeNext = function(callback, i){
@@ -121,7 +113,7 @@ fadeNext = function(callback, i){
 		i = 0;
 	
 	if(typeof currentNode.images[i] !== 'undefined'){
-		fade(currentNode.images[i], function(){
+		fadeSingleImage(currentNode.images[i], function(){
 			fadeNext(callback, i+1)
 		})	
 	}
@@ -131,7 +123,7 @@ fadeNext = function(callback, i){
 	
 }
 
-fade = function(imageSrc, callback){
+fadeSingleImage = function(imageSrc, callback){
 	
 	var handler = function(){
 				$(".pic").unbind('load', handler);
@@ -140,7 +132,7 @@ fade = function(imageSrc, callback){
 				setTimeout(function(){
 
 					callback()
-				},1000)
+				},25)
 				
 			}
 	
