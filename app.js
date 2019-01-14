@@ -7,10 +7,10 @@ function audioToggle(){
 		
 		a.play(); //a.volume=1;
 		$('.audio').attr('src', "./images/audio-on.png")
-		setTimeout(function(){
+		/*setTimeout(function(){
 			$('#musicSource').attr('src', '/sound/Diamond_Hop.mp3')
 			a.load();a.play();
-		},5000)
+		},5000)*/
 	}
 		else {
 			//a.volume=0;
@@ -84,6 +84,7 @@ function setCurrentNode(name){
 
 
 var newGame = function(){
+	audioToggle();
 	$.get( "./data.json", function( data ) {
   window.nodes = data;
 
