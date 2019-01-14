@@ -35,7 +35,6 @@ function setCurrentNode(name){
 		window.currentNode = _.find(nodes, function(node){return node.nodeId.toLowerCase() == name.toLowerCase()});
 		$('.pic').attr('src', currentNode.images[0])
 		$('.pic2').attr('src', currentNode.images[1])
-		$('.pic2').removeClass('hidden');
 	}
 	
 	$('#left').html($("<a></a>").attr("onclick", "").text());
@@ -57,6 +56,8 @@ function setCurrentNode(name){
 		if(name == "root"){
 
 		setTimeout(function(){
+					$('.pic2').removeClass('hidden');
+
 				fade();
 
 		},1000)
