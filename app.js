@@ -56,7 +56,10 @@ function setCurrentNode(name){
 		if(name == "root"){
 
 		setTimeout(function(){
-						$('.pic2').removeClass('hidden');
+			setTimeout(function(){
+										$('.pic2').removeClass('hidden');
+
+			},10)
 
 				fade();
 
