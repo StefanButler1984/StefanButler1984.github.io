@@ -107,7 +107,7 @@ var fade = function(){
 	
 }
 
-fadeTimeout = 2000;
+fadeTimeout = 1500;
 fadeNext = function(callback, i){
 
 	if(typeof i === 'undefined')
@@ -133,7 +133,7 @@ fadeSingleImage = function(imageSrc, callback){
 				setTimeout(function(){
 
 					callback()
-				},25)
+				},500)
 				
 			}
 	
