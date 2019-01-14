@@ -128,53 +128,6 @@ fade = function(imageSrc, callback){
 
 }
 
-fade2 = function(callback, i){
-	
-
-	
-		
-			$('.pic').removeClass('fade')
-
-		if(typeof i === 'undefined')
-		i = 0;
-
-		$('.pic').attr('src', currentNode.images[i])
-		
-		i++;
-		if(typeof currentNode.images[i] !== 'undefined'){
-			$('.pic2').attr('src', currentNode.images[i])
-			setTimeout(function(){
-				$('.pic').addClass('fade')
-				setTimeout(function(){
-					$('.pic').attr('src', currentNode.images[i])
-
-					setTimeout(function(){
-						//$('.pic').removeClass('fade')
-
-		if(typeof currentNode.images[i+1] !== 'undefined'){
-						setTimeout(function(){
-							fade(callback,i)
-						},2)
-		}
-else{callback();}		
-					},5)
-				},fadeTimeout)
-			},250)
-			
-		}
-		else{
-			callback();
-		}
-		
-
-	
-
-
-
-				
-	
-
-}
 
 
 String.prototype.replaceAll = function(search, replacement) {
