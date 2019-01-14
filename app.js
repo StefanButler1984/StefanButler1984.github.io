@@ -133,7 +133,7 @@ fade = function(imageSrc, callback){
 				},100)
 				
 			}
-			 $(".pic").bind('load', handler);
+			 $(".pic").on('load', handler);
 			$('.pic').attr('src', imageSrc)
 
 			
