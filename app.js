@@ -129,19 +129,26 @@ fadeNext = function(callback, i){
 
 fadeSingleImage = function(imageSrc, callback){
 	
+	var handler = function(){
+				$(".pic").unbind('load', handler);
+				$('.pic').removeClass('fade')
+
+				setTimeout(function(){
+
+					callback()
+				},500)
+				
+			}
+	
+	
+	
+	$(".pic").on('load', handler);
 	$('.pic2').attr('src', imageSrc)
 	$('.pic').addClass('fade');
-	
 	setTimeout(function(){
 		
-		$('.pic').attr('src', imageSrc).load(function(){
-			$('.pic').removeClass('fade')
+		 $('.pic').attr('src', imageSrc + "?rand="+Math.random().toString().replace('0.',''))
 
-			setTimeout(function(){
-
-				callback()
-			},500)
-		});
 	}, fadeTimeout)
 
 }
