@@ -1,0 +1,29 @@
+[
+
+{
+
+"header":"What is this place root",
+
+"images":["./images/corridor/2_far.png","./images/corridor/2_close.png"],
+
+"decisions":
+{
+
+
+"0":
+	{
+
+		"description":"Left","goto":"Left1"
+	},
+
+	
+"1":
+	{
+		"description":"Right","goto":"Right1"
+	}
+
+	
+}
+}
+
+]
