@@ -30,10 +30,14 @@ document.addEventListener("visibilitychange", function() {
 		audioPlaying=false;
   }
   else{
-	    alert(document.visibilityState)
+		setTimeout(function(){
+			a = document.getElementById("backgroundMusic")
 
 	  a.play();
 		audioPlaying=true;
+			
+		},10)
+  	  	
 	  
   }
 }, false);
