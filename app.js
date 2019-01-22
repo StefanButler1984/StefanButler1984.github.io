@@ -20,6 +20,22 @@ function audioToggle(){
 		}
 			
 }
+
+document.addEventListener("visibilitychange", function() {
+  console.log(document.hidden, document.visibilityState);
+  	  	a = document.getElementById("backgroundMusic")
+
+  if(document.hidden){
+			a.pause();
+		audioPlaying=false;
+  }
+  else{
+	  a.play();
+		audioPlaying=true;
+	  
+  }
+}, false);
+
 var nodes = [];
 var root = null;
 var universe = getURLParam('universe',location.search)
