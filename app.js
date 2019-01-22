@@ -42,7 +42,7 @@ document.addEventListener("visibilitychange", function() {
 					clearInterval(t)
 				}
 				
-			},1000)
+			},250)
   	  	
 	  
   }
