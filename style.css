@@ -1,13 +1,18 @@
 
-a{cursor:crosshair;}
-a, #header, span, div{
+a,a:link,a:visited,a:hover,a:active, .header, span, div{
  color: white;
     text-align: center;
     font-family: "ZX Spectrum";
-    text-transform: uppercase;}
+    text-transform: uppercase;
+	 text-decoration: none;
+	cursor:crosshair;
+	}
 
-	
-	
+	.black {
+		 color: black;
+
+	}
+
 html{
    
 
@@ -20,11 +25,8 @@ body {
 
 }
 
-#images {
-	
-	position:relative; width:100%
-}
-.container{
+
+.container2{
     width:100%;margin:auto;overflow:hidden
 }
 
@@ -51,7 +53,7 @@ margin-left:25px;
 }
 
 
-#header { width: 100%;    height: 10%;}
+.header { width: 100%;    height: 10%;}
 
 #footer div{
     text-align: left;
@@ -62,17 +64,16 @@ margin-left:25px;
     display: inline-block;
     /*height: 25%;*/
     vertical-align: middle;}
-	#container1{width:90%; margin:auto;/*object-fit: contain*/ padding-top:90%; position:relative}
 
-#container{/*object-fit: contain*/ 	/*width: 80vw;
-    height: 80vh;*/position: relative;
-  top: 48%;
-  transform: translateY(-50%);}
-#controls{width:93%; margin:auto;margin-top:10px;}
+	
 
-#left{float:left;width:49%;text-align:left; }
-#right{float:right;width:49%;text-align:right; }
-#center{margin:0 auto;width:1%;}
+  
+
+.controls{margin-top:10px;}
+
+.left-control{text-align:left; padding-left:3%;}
+.right-control{text-align:right; padding-right:3%;}
+
 
 .picn, .pic2n {
     vertical-align: middle;
@@ -91,22 +92,8 @@ width:100vh;
 }
 
 
-.landscape-left-controls, .landscape-right-controls{
-	
-	
-}
 
-.landscape-menu{
-	
-	margin-top:13%;
-	
-}
 
-.landscape-menu .map {  width:60px; margin-top:20px;}
-.landscape-menu .sword { width:75px; margin-top:20px; }
-
-.portrait-menu .map {  width:60px; margin-top:20px;margin-left:20px; }
-.portrait-menu .sword { width:75px; margin-top:20px; margin-right:20px; }
 
 .fade {
 -moz-transition: opacity .2s; /* Firefox 4 */
@@ -123,7 +110,8 @@ transition: opacity .2s;
 .row {
   margin-right: 0;
   margin-left: 0;
-
+padding-right: 0;
+    padding-left: 0;
   > .col,
   > [class*="col-"] {
     padding-right: 0;
@@ -131,14 +119,18 @@ transition: opacity .2s;
   }
 }
 
-#controls{  
-}
+
 
 #header{}
 
 
 
-
+	
+	.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
 
 .pic, .pic2 {
@@ -154,22 +146,29 @@ transition: opacity .2s;
 
 .pic2{z-index:-1;}
 
+.portrait{
+	
+	height: 100%;
 
-
-
+}
+.portrait-image {
+	
+}
 
 
 
 /* Portrait */
 @media screen and (orientation:portrait) {
-	.landscape-menu {  display:none}
-	.portrait-menu {  display:block;}
-	#images {
+	#container{
+	position: relative;
+  top: 10%;
+  transform: translateY(-10%);}
 	
-	/*height:38%;*/
-}
+	.landscape{display:none}
+	.portrait {display:block;}
+	.portrait-image{margin-bottom: 75%;}
 
-	#header{    font-size: 1rem; margin:auto;height:13%
+	.header{    font-size: 1rem; margin:auto;height:13%
 }
 a{font-size: 1.2rem;}
 
@@ -190,6 +189,13 @@ html {font-size: 2.5em;}
 }
 /* Landscape */
 @media screen and (orientation:landscape) {
+	
+	#container{
+	position: relative;
+  top: 48%;
+  transform: translateY(-50%);}
+	
+	
 	.inventory {
 		font-size: 1rem;
 	}
@@ -197,17 +203,13 @@ html {font-size: 2.5em;}
 		margin-top:30px;
 	}
 
-	.landscape-menu {  display:block}
-	.portrait-menu {  display:none;}
+	.landscape{display:block}
+	.portrait {display:none;}
 	
-	
-	
-	#images {
-	
-	/*height:75%;*/
-}
 
-		#header{    font-size: 2rem;padding-top:3%; width:97%; margin:auto;height:19%;
+
+
+		.header{    font-size: 2rem;padding-top:3%; width:97%; margin:auto;height:19%;
 }
 a{font-size: 3rem;}
 .audio{

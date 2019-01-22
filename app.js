@@ -65,8 +65,8 @@ function setCurrentNode(name){
 		$('.pic2').attr('src', currentNode.images[0])
 	}
 	
-	$('#left').html($("<a></a>").attr("onclick", "").text());
-	$('#right').html($("<a></a>").attr("onclick", "").text());
+	$('.left-control').html($("<a></a>").attr("onclick", "").text());
+	$('.right-control').html($("<a></a>").attr("onclick", "").text("Moving..."));
 	
     if(name.toLowerCase() == "go back"){
 		currentNode = previousNode;
@@ -79,7 +79,7 @@ function setCurrentNode(name){
 
 	}
 	
-	$('#header').html(currentNode.header);
+	$('.header').html(currentNode.header);
 	
 		if(name == "root"){
 
@@ -130,8 +130,8 @@ var fade = function(){
 		else
 			desc1 = currentNode.decisions[1].description
 			
-		$('#left').html($("<a></a>").attr("onclick", "choice(0)").text(desc0));
-		$('#right').html($("<a></a>").attr("onclick", "choice(1)").text(desc1));
+		$('.left-control').html($("<a></a>").attr("onclick", "choice(0)").text(desc0));
+		$('.right-control').html($("<a></a>").attr("onclick", "choice(1)").text(desc1));
 
 		  
 	}) 
