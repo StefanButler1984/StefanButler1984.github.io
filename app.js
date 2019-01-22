@@ -30,13 +30,19 @@ document.addEventListener("visibilitychange", function() {
 		audioPlaying=false;
   }
   else{
-		setTimeout(function(){
-			a = document.getElementById("backgroundMusic")
+		a = document.getElementById("backgroundMusic")
 
-	  a.play();
+		a.play();
 		audioPlaying=true;
-			
-		},1000)
+			t = setInterval(function(){
+				if(a.paused){
+					a.play();
+				}
+				else{
+					clearInterval(t)
+				}
+				
+			},1000)
   	  	
 	  
   }
