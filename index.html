@@ -5,33 +5,47 @@
 
   
     <script src="app.js"></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="stylesheet" type="text/css" href="ZX_Spectrum/stylesheet.css">
 
   </head>
 <body>
 
-    
-    <div id="background" style="">
- 	    <div id="container">
 
-	  <span class="helper" style=""></span>
-        	        <div id="header"></div>
+<div id="background" class="row">
+  <div id="container" class="col-12">
+		  <div class="row">
+		  <div class="col-12">
+        	        <div id="header" class=""></div>
 
-					<div style="position:relative">					<img src="./images/Building.png" class="pic" alt="" style="position:relative;z-index:1;" />
+					<div id="images">					
+					
+						<img src="./images/Building.png" class="pic img-responsive center-block" alt="" style="position:relative;z-index:1;" />
 
-					<img src="" class="pic2 hidden" alt="" style="position:absolute;top:0;z-index:0;left: 50%;transform: translate(-50%, 0);"/>
+						<img src="" class="pic2 hidden img-responsive center-block" alt="" style="position:absolute;top:0;z-index:0;left: 50%;transform: translate(-50%, 0);"/>
 
 					
 					</div>
     
-	<div id="controls"><img src="./images/audio-off.png" class="audio" onclick="audioToggle()" style="display:none;">
-		  <div id="left"></div>
-		  <div id="right"><a onclick="newGame()">New Game</a></div>
-		  <div id="center"></div>
+	
+					<div id="controls" class="row" style="height:10%">
+					  <div class="col-xs-6" id="left"></div>
+					  <div class="col-xs-6" id="right"><a onclick="newGame()">New Game</a></div>
+					</div>
+			
+		  
+		  </div>
+
 		</div>
-		</div>
-    </div>
+  
+  </div>
+
+</div>
+
+
+
 	</div>
 	
 	<audio loop id="backgroundMusic">

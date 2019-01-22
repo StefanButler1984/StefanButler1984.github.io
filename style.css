@@ -1,17 +1,29 @@
 
-a{cursor:crosshair}
-
-html{
-background-color: black;
-    color: white;
-    font-size: 2rem;
+a{cursor:crosshair;}
+a, #header{
+ color: white;
     text-align: center;
     font-family: "ZX Spectrum";
-    text-transform: uppercase;
+    text-transform: uppercase;}
+
+	
+	
+html{
+   
 
 
 }
+ 
+body {
+	
+	background-color: black;
 
+}
+
+#images {
+	
+	position:relative; width:100%
+}
 .container{
     width:100%;height:70%;margin:auto;overflow:hidden
 }
@@ -31,7 +43,7 @@ margin-left:25px;
     top: 0px; 
 }
 
-.pic {
+.picn {
     vertical-align: middle;
     display: inline-block;
     width:100vh;
@@ -62,7 +74,7 @@ margin-left:25px;
 #right{float:right;width:49%;text-align:right; }
 #center{margin:0 auto;width:1%;}
 
-.pic, .pic2 {
+.picn, .pic2n {
     vertical-align: middle;
     display: inline-block;
 width:100vh;
@@ -94,12 +106,22 @@ visibility: hidden;
 .hidden {display:none;}
 
 
+#controls{    padding-left: 4%;
+}
 
-
-
+#header{}
 
 /* Portrait */
 @media screen and (orientation:portrait) {
+	
+	#images {
+	
+	height:38%;
+}
+
+	#header{    font-size: 1rem; margin:auto;padding-left:4%; height:13%
+}
+a{font-size: 1.2rem;}
 .pic, .pic2 {
 
     width:100%;
@@ -118,8 +140,14 @@ html {font-size: 2.5em;}
 }
 /* Landscape */
 @media screen and (orientation:landscape) {
+	#images {
 	
-	
+	height:75%;
+}
+
+		#header{    font-size: 2rem;padding-top:3%; width:97%; margin:auto;height:19%; padding-left:2%;
+}
+a{font-size: 3rem;}
 .audio{
 
     bottom: 1%;

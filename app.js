@@ -110,7 +110,7 @@ var fade = function(){
 	
 }
 
-fadeTimeout = 1500;
+fadeTimeout = 200;
 fadeNext = function(callback, i){
 
 	if(typeof i === 'undefined')
