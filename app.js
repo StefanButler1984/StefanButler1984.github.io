@@ -23,6 +23,7 @@ function audioToggle(){
 
 document.addEventListener("visibilitychange", function() {
   console.log(document.hidden, document.visibilityState);
+  alert(document.visibilityState)
   	  	a = document.getElementById("backgroundMusic")
 
   if(document.hidden){
