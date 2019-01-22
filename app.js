@@ -138,7 +138,7 @@ var fade = function(){
 	
 }
 
-fadeTimeout = 200;
+fadeTimeout = 300;
 fadeNext = function(callback, i){
 
 	if(typeof i === 'undefined')
@@ -171,7 +171,7 @@ fadeSingleImage = function(imageSrc, callback){
 	
 	
 	$(".pic").on('load', handler);
-	$('.pic2').attr('src', imageSrc)
+	$('.pic2').attr('src', imageSrc + "?rand="+Math.random().toString().replace('0.',''))
 	$('.pic').addClass('fade');
 	setTimeout(function(){
 		
