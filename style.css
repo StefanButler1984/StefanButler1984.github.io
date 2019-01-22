@@ -93,7 +93,18 @@ width:100vh;
 
 
 
+.landscape-menu, .portrait-menu {
+	
+	height:100%;
+	margin-top:10%;
+	
+}
 
+.landscape-menu .map {  width:60px; margin-top:20px;}
+.landscape-menu .sword { width:75px; margin-top:20px; }
+
+.portrait-menu .map {  width:60px; margin-top:20px;margin-left:20px; }
+.portrait-menu .sword { width:75px; margin-top:20px; margin-right:20px; }
 
 .fade {
 visibility: hidden;
@@ -104,22 +115,48 @@ visibility: hidden;
 
 
 .hidden {display:none;}
+.row {
+  margin-right: 0;
+  margin-left: 0;
 
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
 
-#controls{    padding-left: 4%;
+#controls{  
 }
 
 #header{}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Portrait */
 @media screen and (orientation:portrait) {
-	
+	.landscape-menu {  display:none}
+	.portrait-menu {  display:block;}
 	#images {
 	
 	height:38%;
 }
 
-	#header{    font-size: 1rem; margin:auto;padding-left:4%; height:13%
+	#header{    font-size: 1rem; margin:auto;height:13%
 }
 a{font-size: 1.2rem;}
 .pic, .pic2 {
@@ -137,16 +174,24 @@ a{font-size: 1.2rem;}
 
 }
 
+
+
 html {font-size: 2.5em;}
 }
 /* Landscape */
 @media screen and (orientation:landscape) {
+	
+	.landscape-menu {  display:block}
+	.portrait-menu {  display:none;}
+	
+	
+	
 	#images {
 	
 	height:75%;
 }
 
-		#header{    font-size: 2rem;padding-top:3%; width:97%; margin:auto;height:19%; padding-left:2%;
+		#header{    font-size: 2rem;padding-top:3%; width:97%; margin:auto;height:19%;
 }
 a{font-size: 3rem;}
 .audio{
