@@ -159,18 +159,25 @@ padding-right: 0;
 
 /* Portrait */
 @media screen and (orientation:portrait) {
-	#container{
+	/*#container{
 	position: relative;
   top: 10%;
   transform: translateY(-10%);}
+	*/
 	
+	.inventory {
+		font-size: .5rem;
+	}
+	.inventory .row {
+		margin-top:30px;
+	}
 	.landscape{display:none}
 	.portrait {display:block;}
 	.portrait-image{margin-bottom: 75%;}
 
 	.header{    font-size: 1rem; margin:auto;height:13%
 }
-a{font-size: 1.2rem;}
+a{font-size: 1.3rem;}
 
 
 .pic22{
@@ -189,12 +196,12 @@ html {font-size: 2.5em;}
 }
 /* Landscape */
 @media screen and (orientation:landscape) {
-	
+	/*
 	#container{
 	position: relative;
   top: 48%;
   transform: translateY(-50%);}
-	
+	*/
 	
 	.inventory {
 		font-size: 1rem;
@@ -203,13 +210,13 @@ html {font-size: 2.5em;}
 		margin-top:30px;
 	}
 
-	.landscape{display:block}
+	.landscape{display:block;max-height:90%}
 	.portrait {display:none;}
 	
 
 
 
-		.header{    font-size: 2rem;padding-top:3%; width:97%; margin:auto;height:19%;
+		.header{    font-size: 2rem; width:97%; margin:auto;height:14%;
 }
 a{font-size: 3rem;}
 .audio{
