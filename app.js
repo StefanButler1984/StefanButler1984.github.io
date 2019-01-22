@@ -36,7 +36,7 @@ document.addEventListener("visibilitychange", function() {
 	  a.play();
 		audioPlaying=true;
 			
-		},10)
+		},1000)
   	  	
 	  
   }
