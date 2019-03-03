@@ -5,7 +5,7 @@ function audioToggle(){
 	audioPlaying = !audioPlaying;
 	a = document.getElementById("backgroundMusic")
 	if(audioPlaying) {
-
+		a.load();
 		a.play(); //a.volume=1;
 		$('.audio').attr('src', "./app/images/audio-on.png")
 		/*setTimeout(function(){
