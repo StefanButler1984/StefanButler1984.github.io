@@ -4,7 +4,7 @@
 
 "header":"What is this place root",
 
-"images":["./images/corridor/2_far.png","./images/corridor/2_close.png"],
+"images":["./app/images/corridor/2_far.png","./app/images/corridor/2_close.png"],
 
 "decisions":
 {

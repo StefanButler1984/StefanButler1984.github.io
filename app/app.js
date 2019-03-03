@@ -6,16 +6,16 @@ function audioToggle(){
 	if(audioPlaying) {
 		
 		a.play(); //a.volume=1;
-		$('.audio').attr('src', "./images/audio-on.png")
+		$('.audio').attr('src', "./app/images/audio-on.png")
 		/*setTimeout(function(){
-			$('#musicSource').attr('src', '/sound/Diamond_Hop.mp3')
+			$('#musicSource').attr('src', './app/sound/Diamond_Hop.mp3')
 			a.load();a.play();
 		},5000)*/
 	}
 		else {
 			//a.volume=0;
 			a.pause();
-		$('.audio').attr('src', "./images/audio-off.png")
+		$('.audio').attr('src', "./app/images/audio-off.png")
 
 		}
 			
@@ -102,7 +102,7 @@ function setCurrentNode(name){
 
 var newGame = function(){
 	audioToggle();
-	$.get( "./data.json", function( data ) {
+	$.get( "./app/data/data.json", function( data ) {
   window.nodes = data;
 
   
