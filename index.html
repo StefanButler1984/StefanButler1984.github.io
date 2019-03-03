@@ -32,8 +32,11 @@
 
 							<div class="row">
 								<div class="col-sm-3 text-center">
-									<img src="./app/images/map/start.png" class="  img-responsive center-block   text-center map"
-										style="display:none;">
+									<div id="canvasL">
+											<canvas id="canvas" class="  img-responsive center-block   text-center" style="position:absolute"></canvas>
+											<img src="./app/images/map/start.png" class="  img-responsive center-block   text-center map"
+											style="display:none;">
+									</div>
 								</div>
 
 								<div class=" col-sm-6 text-center">
@@ -122,8 +125,10 @@
 								<div class="row">
 
 									<div class="col-sm-6 text-center">
-										<img src="./app/images/map/start.png" class="  img-responsive center-block   text-center map"
-											style="display:none;">
+											<div id="canvasP">
+													<img src="./app/images/map/start.png" class="  img-responsive center-block   text-center map"
+													style="display:none;">
+											</div>
 									</div>
 
 									<div style="display:none;" class="inventory col-sm-6 text-center ">

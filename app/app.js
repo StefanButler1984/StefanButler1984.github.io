@@ -1,6 +1,16 @@
 var nodes = [];
 var root = null;
 
+
+setTimeout(function(){
+	$('.map').show();
+
+})
+
+setTimeout(function(){
+	drawCanvas();
+})
+
 var newGame = function(){
 	$('.inventory').show();
 	$('.map').show();
@@ -12,6 +22,71 @@ var newGame = function(){
   setCurrentNode("root")
 });
 	
+}
+
+window.addEventListener("orientationchange", function(o) {
+	
+	drawCanvas();
+
+}, false);
+
+
+function updateCanvasPosition(complete){
+	var initialValue = $('#canvasL').is(":visible");
+	var updateComplete = false;
+	
+	var moveCanvasInterval = setInterval(function(){
+		updateComplete = initialValue != $('#canvasL').is(":visible");
+
+		if(updateComplete){
+			clearInterval(moveCanvasInterval);
+			moveCanvasElement();
+			if(typeof complete !== 'undefined')
+				complete();
+		}
+
+	},1)
+
+	//don't keep the interval for more than x milliseconds
+	setTimeout(function(){
+		clearInterval(moveCanvasInterval);
+		if(!updateComplete){
+			moveCanvasElement();
+			if(typeof complete !== 'undefined')
+				complete();
+		}
+	},100)
+
+}
+
+function moveCanvasElement(){
+	if($('#canvasL').is(":visible")){
+		$("#canvas").detach().prependTo('#canvasL')
+	}
+	else{
+		$("#canvas").detach().prependTo('#canvasP')
+	}
+}
+
+function drawCanvas(){
+	updateCanvasPosition(function(){
+		var canvas = document.getElementById("canvas");
+		fitToContainer(canvas);
+		var ctx = canvas.getContext("2d");
+		ctx.fillStyle = "blue";
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+	})
+
+}
+
+function fitToContainer(canvas){
+  // Make it visually fill the positioned parent
+  canvas.style.width ='100%';
+  canvas.style.height='100%';
+  // ...then set the internal size to match
+  canvas.width  = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
 }
 
 function setCurrentNode(name){
