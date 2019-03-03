@@ -1,62 +1,15 @@
-
-window.audioPlaying = false;
-function audioToggle(){
-	audioPlaying = !audioPlaying;
-	a = document.getElementById("backgroundMusic")
-	if(audioPlaying) {
-		
-		a.play(); //a.volume=1;
-		$('.audio').attr('src', "./app/images/audio-on.png")
-		/*setTimeout(function(){
-			$('#musicSource').attr('src', './app/sound/Diamond_Hop.mp3')
-			a.load();a.play();
-		},5000)*/
-	}
-		else {
-			//a.volume=0;
-			a.pause();
-		$('.audio').attr('src', "./app/images/audio-off.png")
-
-		}
-			
-}
-
-document.addEventListener("visibilitychange", function() {
-  console.log(document.hidden, document.visibilityState);
-  	  	a = document.getElementById("backgroundMusic")
-
-  if(document.hidden){
-			a.pause();
-		audioPlaying=false;
-  }
-  else{
-		a = document.getElementById("backgroundMusic")
-
-		a.play();
-		audioPlaying=true;
-			t = setInterval(function(){
-				if(a.paused){
-					a.play();
-				}
-				else{
-					clearInterval(t)
-				}
-				
-			},250)
-  	  	
-	  
-  }
-}, false);
-
 var nodes = [];
 var root = null;
-var universe = getURLParam('universe',location.search)
-var currentNode = getURLParam('node',location.search)
-if(universe == null)
-  universe = 'ad7cbr'
 
+var newGame = function(){
+	audioToggle();
+	$.get( "./app/data/data.json", function( data ) {
+  window.nodes = data;
 
-
+  setCurrentNode("root")
+});
+	
+}
 
 function setCurrentNode(name){
 	if(name == "root"){
@@ -100,18 +53,7 @@ function setCurrentNode(name){
 }
 
 
-var newGame = function(){
-	audioToggle();
-	$.get( "./app/data/data.json", function( data ) {
-  window.nodes = data;
 
-  
-  setCurrentNode("root")
-  
-
-});
-	
-}
 
 var fade = function(){
 	fadeNext(function(){
@@ -181,13 +123,6 @@ fadeSingleImage = function(imageSrc, callback){
 
 }
 
-
-
-String.prototype.replaceAll = function(search, replacement) {
-    var target = this;
-    return target.replace(new RegExp(search, 'g'), replacement);
-};
-
 function choice(c){
   var goto = "";
    if(typeof currentNode.decisions[c] == "string")
@@ -196,31 +131,5 @@ function choice(c){
     goto = currentNode.decisions[c].goto
   
   setCurrentNode(goto);
-  
 
-
-}
-
-function getURLParam(key,target){
-    var values = [];
-    if (!target) target = location.href;
-
-    key = key.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-
-    var pattern = key + '=([^&#]+)';
-    var o_reg = new RegExp(pattern,'ig');
-    while (true){
-        var matches = o_reg.exec(target);
-        if (matches && matches[1]){
-            values.push(matches[1]);
-        } else {
-            break;
-        }
-    }
-
-    if (!values.length){
-        return null;   
-    } else {
-        return values.length == 1 ? values[0] : values;
-    }
 }

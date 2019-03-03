@@ -1,0 +1,1 @@
+var startingMusic = "./app/sound/Fish_Cafe.mp3";
