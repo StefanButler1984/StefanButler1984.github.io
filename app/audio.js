@@ -1,9 +1,10 @@
 window.audioPlaying = false;
 function audioToggle(){
+	$('#musicSource').attr('src', startingMusic)
+
 	audioPlaying = !audioPlaying;
 	a = document.getElementById("backgroundMusic")
 	if(audioPlaying) {
-		$('#musicSource').attr('src', startingMusic)
 
 		a.play(); //a.volume=1;
 		$('.audio').attr('src', "./app/images/audio-on.png")
