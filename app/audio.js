@@ -19,7 +19,7 @@ function audioToggle(){
 
 		}
 			
-}
+} 
 
 
 document.addEventListener("visibilitychange", function() {
