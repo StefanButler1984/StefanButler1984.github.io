@@ -2,6 +2,9 @@ var nodes = [];
 var root = null;
 
 var newGame = function(){
+	$('.inventory').show();
+	$('.map').show();
+
 	audioToggle();
 	$.get( "./app/data/data.json", function( data ) {
   window.nodes = data;
