@@ -9,14 +9,14 @@ var mapPositions = [
 	{x: 51, y:55, color: "black"},
 	{x: 51, y:47, color: "black"},
 	{x: 51, y:40, color: "yellow"},
-	/*{x: 51, y:34, color: ""},
-	{x: 51, y:27, color: ""},
-	{x: 64, y:62, color: ""},
-	{x: 64, y:47, color: ""},
-	{x: 64, y:27, color: ""},
-	{x: 27, y:48, color: ""},
-	{x: 27, y:27, color: ""},
-	{x: 27, y:19, color: ""},*/
+	/*{x: 51, y:34, color: "black"},
+	{x: 51, y:27, color: "black"},
+	{x: 64, y:62, color: "black"},
+	{x: 64, y:47, color: "black"},
+	{x: 64, y:27, color: "black"},
+	{x: 27, y:48, color: "black"},
+	{x: 27, y:27, color: "black"},
+	{x: 27, y:19, color: "black"},*/
 
 ];
 
