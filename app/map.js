@@ -70,10 +70,10 @@ function updateCanvasPosition(complete){
 
 function moveCanvasElement(){
 	if($('#canvasL').is(":visible")){
-		$("#canvas").detach().prependTo('#canvasL')
+		$("#canvasGroup").detach().prependTo('#canvasL')
 	}
 	else{
-		$("#canvas").detach().prependTo('#canvasP')
+		$("#canvasGroup").detach().prependTo('#canvasP')
 	}
 }
 
@@ -85,6 +85,20 @@ function drawCanvas(){
 		ctx.globalAlpha = 0.5
 
 		ctx.fillStyle = "#1923FE";	
+		var dim = getMapDimensions();
+		var x = canvas.width - dim.x;
+		var y = canvas.height - dim.y;
+		ctx.fillRect(0, y, canvas.width-x, canvas.height-y);
+		canvas.style.left = dim.offsetLeft;
+
+
+
+		var canvas = document.getElementById("canvas2");
+		fitToContainer(canvas);
+		var ctx = canvas.getContext("2d");
+		ctx.globalAlpha = 0.5
+
+		ctx.fillStyle = "red";	
 		var dim = getMapDimensions();
 		var x = canvas.width - dim.x;
 		var y = canvas.height - dim.y;
