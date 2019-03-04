@@ -1,22 +1,49 @@
-var mapPositions = [];
+var mapPositions = [
+	{x: 39, y:76, color: "black"},
+	{x: 39, y:69, color: "black"},
+	{x: 39, y:48, color: "black"},
+	{x: 39, y:40, color: "black"},
+	{x: 39, y:27, color: "black"},
+	{x: 51, y:69, color: "black"},
+	{x: 51, y:62, color: "black"},
+	{x: 51, y:55, color: "black"},
+	{x: 51, y:47, color: "black"},
+	{x: 51, y:40, color: "yellow"},
+	/*{x: 51, y:34, color: ""},
+	{x: 51, y:27, color: ""},
+	{x: 64, y:62, color: ""},
+	{x: 64, y:47, color: ""},
+	{x: 64, y:27, color: ""},
+	{x: 27, y:48, color: ""},
+	{x: 27, y:27, color: ""},
+	{x: 27, y:19, color: ""},*/
+
+];
 
 
 setTimeout(function(){
 	$('.map').show();
+	drawCanvas();
 
 })
 
 setTimeout(function(){
-	drawCanvas();
-
+return;
 	var canvas = document.getElementById("canvas");
 
 //report the mouse position on click
 canvas.addEventListener("click", function (evt) {
 	var mousePos = getMousePos(canvas, evt);
-	var mx = canvas.width + (mousePos.x - canvas.width);
-	var my = canvas.height + (mousePos.y - canvas.height);
-	alert(mousePos.x + ',' + mousePos.y + "::" + mx + "," + my);
+	// var mx = canvas.width + (mousePos.x - canvas.width);
+	// var my = canvas.height + (mousePos.y - canvas.height);
+	// alert(mousePos.x + ',' + mousePos.y + "::" + mx + "," + my);
+
+	var dim = getMapDimensions();
+	var x = mousePos.x / canvas.width + .065;
+	var y = mousePos.y / canvas.height;
+	alert(x + ',' + y);
+
+
 }, false);
 
 //Get Mouse Position
@@ -27,7 +54,7 @@ function getMousePos(canvas, evt) {
 			y: evt.clientY - rect.top
 	};
 }
-})
+},1000)
 
 window.onresize = function(event) {
 	drawCanvas();
@@ -78,34 +105,76 @@ function moveCanvasElement(){
 }
 
 function drawCanvas(){
+	$('.canvas').remove()
+
 	updateCanvasPosition(function(){
-		var canvas = document.getElementById("canvas");
-		fitToContainer(canvas);
-		var ctx = canvas.getContext("2d");
-		ctx.globalAlpha = 0.5
+		var canvas = document.createElement('canvas');
+		canvas.id = "canvas";
+		canvas.className = "canvas";		
+		$('#canvasGroup').prepend(canvas).ready(function () {
 
-		ctx.fillStyle = "#1923FE";	
-		var dim = getMapDimensions();
-		var x = canvas.width - dim.x;
-		var y = canvas.height - dim.y;
-		ctx.fillRect(0, y, canvas.width-x, canvas.height-y);
-		canvas.style.left = dim.offsetLeft;
+			fitToContainer(canvas);
+			var ctx = canvas.getContext("2d");
+			ctx.globalAlpha = 1
+	
+			ctx.fillStyle = "#1923FE";	
+			var dim = getMapDimensions();
+			ctx.fillRect(0, 0, dim.x, dim.y);
+			canvas.style.left = dim.offsetLeft;
+			canvas.style.zIndex = -5;
+		});
 
 
 
-		var canvas = document.getElementById("canvas2");
+
+		/*var canvas = document.getElementById("canvas2");
 		fitToContainer(canvas);
 		var ctx = canvas.getContext("2d");
 		ctx.globalAlpha = 0.5
 
 		ctx.fillStyle = "red";	
 		var dim = getMapDimensions();
-		var x = canvas.width - dim.x;
-		var y = canvas.height - dim.y;
-		ctx.fillRect(0, y, canvas.width-x, canvas.height-y);
-		canvas.style.left = dim.offsetLeft;
+		ctx.fillRect(dim.x*.39, dim.y*.69 ,dim.x*.09, dim.x*.09);
+		canvas.style.left = dim.offsetLeft;*/
+
+		addPositions();
 	})
 
+}
+
+function addPositions(){
+	var j = mapPositions.length;
+	for(var i = 0; i< mapPositions.length; i++){
+		var mapPosition = mapPositions[i];
+		var canvas = document.createElement('canvas');
+		canvas.id = i;
+		canvas.className = "canvas";
+
+		$('#canvasGroup').prepend(canvas).ready(function () {
+			j--;
+			if(j ==0){
+				addPositionColors();
+			}
+		});
+	}
+}
+
+function addPositionColors(){
+	for(var i = 0; i< mapPositions.length; i++){
+		var mapPosition = mapPositions[i];
+		var canvas = document.getElementById(i);
+
+		fitToContainer(canvas);
+		var ctx = canvas.getContext("2d");
+		ctx.globalAlpha = 1;
+	
+		ctx.fillStyle = mapPosition.color;	
+		var dim = getMapDimensions();
+		ctx.fillRect(dim.x*mapPosition.x/100, dim.y*mapPosition.y/100 ,dim.x*.09, dim.x*.09);
+		canvas.style.left = dim.offsetLeft;	
+		canvas.style.zIndex = -1;
+
+	}			
 }
 
 function getMapDimensions(){
