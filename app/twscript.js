@@ -35,7 +35,20 @@ var decisions = "[" + result[j].replace('[[[[','[[').replace(']]]]',']]').replac
 }
 
 if(data.indexOf("<<if") !== -1){
-newItem.conditional = splitMulti(q.replace("<<endif>>",'').replace("<<if", ""),["<<else if", "<<else>>"])
+newItem.conditional = "newItem.conditional = function(){" + data.replace("<<endif>>", "`}").replace("<<else>>", "`;} else { return `").replace(/<<else if/g, "`; } else if(").replace("<<if", "if(").replace(/>>/g, ") { return `").replace(/ is /g, '==') + "}"
+
+}
+
+if(data.indexOf("<<set") !== -1){
+var logic = data.match(/<<.*>>/g)
+newItem.commands = "";
+if(logic != null){
+	for(m=0; m<logic.length; m++){
+	 newItem.commands = newItem.commands +  logic[m].replace("<<set", "").replace(">>", ";").replace("to", "=")
+
+}
+}
+
 
 }
 
