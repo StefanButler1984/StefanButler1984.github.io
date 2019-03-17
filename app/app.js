@@ -21,11 +21,7 @@ var newGame = function () {
 
 }
 
-setTimeout(function () {
-	newGame();
 
-
-})
 function setCurrentNode(name) {
 	if (name == "root") {
 		window.currentNode = _.find(nodes, function (node) { return node.nodeId.toLowerCase() == name.toLowerCase() });
