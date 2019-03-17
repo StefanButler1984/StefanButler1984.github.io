@@ -1,31 +1,34 @@
 var mapPositions = [
-	{x: 39, y:76, color: "black"},
-	{x: 39, y:69, color: "black"},
-	{x: 39, y:48, color: "black"},
-	{x: 39, y:40, color: "black"},
-	{x: 39, y:27, color: "black"},
-	{x: 51, y:69, color: "black"},
-	{x: 51, y:62, color: "black"},
-	{x: 51, y:55, color: "black"},
-	{x: 51, y:47, color: "black"},
-	{x: 51, y:40, color: "yellow"},
-	/*{x: 51, y:34, color: "black"},
-	{x: 51, y:27, color: "black"},
-	{x: 64, y:62, color: "black"},
-	{x: 64, y:47, color: "black"},
-	{x: 64, y:27, color: "black"},
-	{x: 27, y:48, color: "black"},
-	{x: 27, y:27, color: "black"},
-	{x: 27, y:19, color: "black"},*/
+	{x: 39, y:76, color: "yellow"}, //start
+	{x: 39, y:69, color: "#1923FE"}, //pax
+	{x: 51, y:69, color: "#1923FE"}, //old woman
+	{x: 51, y:62, color: "#1923FE"}, //first door
+	{x: 64, y:62, color: "#1923FE"}, //first door -> key
+	{x: 51, y:55, color: "#1923FE"}, //rat
+	{x: 51, y:47, color: "#1923FE"}, //nest area
+	{x: 64, y:47, color: "#1923FE"}, //nest area -> boarded door
+
+	{x: 39, y:48, color: "#1923FE"}, //crossroads
+	{x: 27, y:48, color: "#1923FE"}, //crossroads code and map
+
+	{x: 39, y:40, color: "#1923FE"}, //rat nest
+	{x: 51, y:40, color: "#1923FE"}, //chained man & pax 2
+	{x: 51, y:34, color: "#1923FE"}, //cross road
+	{x: 64, y:27, color: "#1923FE"}, //cross road -> crypt hole
+
+	{x: 51, y:27, color: "#1923FE"}, //worm
+	{x: 39, y:27, color: "#1923FE"}, //stones door
+	{x: 27, y:27, color: "#1923FE"}, //wormhole door
+	{x: 27, y:19, color: "#1923FE"},
+
+
+
+
 
 ];
 
 
-setTimeout(function(){
-	$('.map').show();
-	drawCanvas();
 
-})
 
 setTimeout(function(){
 return;

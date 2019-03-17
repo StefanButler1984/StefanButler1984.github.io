@@ -3,6 +3,22 @@ var root = null;
 
 
 
+	var newGame = function(){
+		$('.inventory').show();
+		audioToggle();
+		$.get( "./app/data/data.json", function( data ) {
+		window.nodes = data;
+	
+		
+		setCurrentNode("root")
+		
+		$('.map').show();
+		drawCanvas();
+	
+	});
+		
+	}
+
 function setCurrentNode(name){
 	if(name == "root"){
 		window.currentNode = _.find(nodes, function(node){return node.nodeId.toLowerCase() == name.toLowerCase()});
