@@ -26,14 +26,18 @@ var mapPositions = [
 
 var visited = [];
 
-var positionVisited = function(pos){
+var positionVisited = function(node){
 
-	if(visited.indexOf(pos.name) == -1)
+	if(visited.indexOf(node.nodeId) == -1)
 	{
-		visited.push(pos.name);
+		visited.push(node.nodeId);
 	}
+	nodes.forEach(function(node){
+		if(visited.indexOf(node.nodeId) >= 0)
+			node.map.color = "black"
+	})
 
-	pos.color="black";
+	node.map.color="yellow";
 }
 
 
@@ -117,7 +121,7 @@ function moveCanvasElement(){
 function drawCanvas(){
 	$('.canvas').remove()
 	var map = $('.map');
-	map.css("background-color", "#1923FE")
+	map.css("background-color", backgroundColor)
 	updateCanvasPosition(function(){
 		var canvas = document.createElement('canvas');
 		canvas.id = "canvas";
@@ -128,7 +132,7 @@ function drawCanvas(){
 			var ctx = canvas.getContext("2d");
 			ctx.globalAlpha = 1
 	
-			ctx.fillStyle = "#1923FE";	
+			ctx.fillStyle = backgroundColor;	
 			var dim = getMapDimensions();
 			ctx.fillRect(0, 0, dim.x, dim.y);
 			canvas.style.left = dim.offsetLeft;
@@ -156,9 +160,9 @@ function drawCanvas(){
 }
 
 function addPositions(){
-	var j = mapPositions.length;
-	for(var i = 0; i< mapPositions.length; i++){
-		var mapPosition = mapPositions[i];
+	var j = window.nodes.length;
+	for(var i = 0; i< window.nodes.length; i++){
+		var mapPosition = window.nodes[i].map;
 		var canvas = document.createElement('canvas');
 		canvas.id = i;
 		canvas.className = "canvas";
@@ -173,15 +177,19 @@ function addPositions(){
 }
 
 function addPositionColors(){
-	for(var i = 0; i< mapPositions.length; i++){
-		var mapPosition = mapPositions[i];
+	for(var i = 0; i< window.nodes.length; i++){
+		var mapPosition = window.nodes[i].map;
 		var canvas = document.getElementById(i);
 
 		fitToContainer(canvas);
 		var ctx = canvas.getContext("2d");
 		ctx.globalAlpha = 1;
 	
-		ctx.fillStyle = mapPosition.color;	
+		if(typeof mapPosition.color !== 'undefined')
+			ctx.fillStyle = mapPosition.color;	
+		else
+			ctx.fillStyle = "transparent";	
+
 		var dim = getMapDimensions();
 		ctx.fillRect(dim.x*mapPosition.x/100, dim.y*mapPosition.y/100 ,dim.x*.09, dim.x*.09);
 		canvas.style.left = dim.offsetLeft;	

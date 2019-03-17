@@ -1,72 +1,61 @@
 [
     {
         "nodeId": "start",
-        "map": {"x": 39, "y":76, "color": "yellow"},
+        "map": {"x": 39, "y":76},
 
-        "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
+        "header": "start",
         "images": [
             "./app/images/corridor/2_far.png",
             "./app/images/corridor/2_close.png"
         ],
         "decisions": {
-            "0": {
-                "description": "Left",
-                "goto": "Left1"
-            },
             "1": {
-                "description": "Right",
-                "goto": "Right1"
+                "description": "Forward",
+                "goto": "pax"
             }
         }
     },
 
     {
         "nodeId": "pax",
-        "map": 	{"x": 39, "y":69, "color": "red"},
+        "map": 	{"x": 39, "y":69},
 
-        "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
+        "header": "pax",
         "images": [
             "./app/images/corridor/2_far.png",
             "./app/images/corridor/2_close.png"
         ],
         "decisions": {
             "0": {
-                "description": "Left",
-                "goto": "Left1"
-            },
-            "1": {
                 "description": "Right",
-                "goto": "Right1"
+                "goto": "oldwoman"
             }
         }
     },
 
     {
         "nodeId": "oldwoman",
-        "map": 	{"x": 51, "y":69, "color": "#1923FE"},
+        "map": 	{"x": 51, "y":69},
         
-        "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
+        "header": "oldwoman",
         "images": [
             "./app/images/corridor/2_far.png",
             "./app/images/corridor/2_close.png"
         ],
         "decisions": {
-            "0": {
-                "description": "Left",
-                "goto": "Left1"
-            },
+
             "1": {
-                "description": "Right",
-                "goto": "Right1"
+                "description": "Forward",
+                "goto": "firstdoor"
             }
         }
     },
 
     {
         "nodeId": "firstdoor",
-        "map": 	{"x": 51, "y":62, "color": "#1923FE"},
+        "map": 	{"x": 51, "y":62},
         
-        "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
+        "header": "firstdoor",
         "images": [
             "./app/images/corridor/2_far.png",
             "./app/images/corridor/2_close.png"
@@ -86,7 +75,7 @@
 
     {
         "nodeId": "firstdoorkey",
-        "map": 	{"x": 64, "y":62, "color": "#1923FE"},
+        "map": 	{"x": 64, "y":62},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -107,7 +96,7 @@
 
     {
         "nodeId": "rat",
-        "map": 	{"x": 51, "y":55, "color": "#1923FE"},
+        "map": 	{"x": 51, "y":55},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -128,7 +117,7 @@
 
     {
         "nodeId": "nestarea",
-        "map": {"x": 51, "y":47, "color": "#1923FE"},
+        "map": {"x": 51, "y":47},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -149,7 +138,7 @@
 
     {
         "nodeId": "nestareaboardeddoor",
-        "map": 	{"x": 64, "y":47, "color": "#1923FE"},
+        "map": 	{"x": 64, "y":47},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -170,7 +159,7 @@
 
     {
         "nodeId": "crossroads1",
-        "map": 	{"x": 39, "y":48, "color": "#1923FE"},
+        "map": 	{"x": 39, "y":48},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -191,7 +180,7 @@
 
     {
         "nodeId": "crossroads1map",
-        "map": 	{"x": 27, "y":48, "color": "#1923FE"},
+        "map": 	{"x": 27, "y":48},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -212,7 +201,7 @@
 
     {
         "nodeId": "ratnext",
-        "map": 	{"x": 39, "y":40, "color": "#1923FE"},
+        "map": 	{"x": 39, "y":40},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -233,7 +222,7 @@
 
     {
         "nodeId": "chainedman",
-        "map": 	{"x": 51, "y":40, "color": "#1923FE"},
+        "map": 	{"x": 51, "y":40},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -254,7 +243,7 @@
 
     {
         "nodeId": "spareoom",
-        "map": 	{"x": 51, "y":34, "color": "#1923FE"},
+        "map": 	{"x": 51, "y":34},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -275,7 +264,7 @@
 
     {
         "nodeId": "crossroads2",
-        "map": 	{"x": 64, "y":27, "color": "#1923FE"},
+        "map": 	{"x": 64, "y":27},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -296,7 +285,7 @@
 
     {
         "nodeId": "crossroads2crypthole",
-        "map": 	{"name": "crossroads2crypthole", "x": 51, "y":27, "color": "#1923FE"},
+        "map": 	{"name": "crossroads2crypthole", "x": 51, "y":27},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -317,7 +306,7 @@
 
     {
         "nodeId": "worm",
-        "map": 	{"x": 39, "y":27, "color": "#1923FE"},
+        "map": 	{"x": 39, "y":27},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -338,7 +327,7 @@
 
     {
         "nodeId": "stonesdoor",
-        "map": 	{ "x": 27, "y":27, "color": "#1923FE"},
+        "map": 	{ "x": 27, "y":27},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
@@ -359,7 +348,7 @@
 
     {
         "nodeId": "wormholedoor",
-        "map": 	{"x": 27, "y":19, "color": "#1923FE"},
+        "map": 	{"x": 27, "y":19},
         
         "header": "This is the longest string of text that will fit in on the screen. So we will have to make due",
         "images": [
