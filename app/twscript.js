@@ -17,25 +17,46 @@ var reg = new RegExp(/\[\[.*/g);
 var data = elm.innerText;
 newItem.raw = data;
 newItem.rawer = elm;
-newItem.decisions = []
-if(data.indexOf("[[") != -1){
-var result = data.match(reg);
+newItem.decisions = [];
+newItem.setDecisions = function(){
+
+if(typeof this.conditional !== 'undefined'){
+	this.conditionalFunction = eval(this.conditional);
+    this.data = this.conditionalFunction();
+}
+else{
+	this.data = this.raw;
+}
+
+this.header = this.data;
+
+if(this.data.indexOf("[[") != -1){
+var result = this.data.match(reg);
 if (result !== null){
 
 for(j = 0; j<result.length; j++){
 var decisions = "[" + result[j].replace('[[[[','[[').replace(']]]]',']]').replace(/\[\[/g, '{"').replace(/\]\]/g, '"},').replace(/\|/g, '":"') + "]";
 	decisions = decisions.replace(",]", "]")
 	decisions = JSON.parse(decisions);
-	newItem.decisions.push(decisions)
-	data = data.replace(result[j], '');
+	this.decisions.push(decisions)
+	this.header = this.header.replace(result[j], '');
 }
 	
 	
 }
 }
 
+this.header = this.header.replace(/(\r\n|\n|\r)/gm,".").replace(/\.+/g,'. ').replace('?.','? ').replace('!.','! ').replace(/  /g,' ').replace(/\\\. /g,'');
+
+}
+
 if(data.indexOf("<<if") !== -1){
-newItem.conditional = "newItem.conditional = function(){" + data.replace("<<endif>>", "`}").replace("<<else>>", "`;} else { return `").replace(/<<else if/g, "`; } else if(").replace("<<if", "if(").replace(/>>/g, ") { return `").replace(/ is /g, '==') + "}"
+
+var firstBit = data.substr(0, data.indexOf("<<if"));
+data = data.splice(0, data.indexOf("<<if"));
+
+newItem.conditional = "newItem.conditional = function(){" + data.replace("<<endif>>", "`}").replace("<<else>>", "`;} else { return `" + firstBit).replace(/<<else if/g, "`; } else if(").replace("<<if", "if(").replace(/>>/g, ") { return `" + firstBit).replace(/ is /g, '==') + "}"
+
 
 }
 
@@ -52,7 +73,6 @@ if(logic != null){
 
 }
 
-newItem.header = data.replace(/(\r\n|\n|\r)/gm,".").replace(/\.+/g,'. ').replace('?.','? ').replace('!.','! ').replace(/  /g,' ').replace(/\\\. /g,'');
 items.push(newItem)
 
 
