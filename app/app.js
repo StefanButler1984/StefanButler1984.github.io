@@ -42,6 +42,83 @@ function setCurrentNode(name) {
 		}
 
 	}
+
+	currentNode.init =	 function () {
+		var reg = new RegExp(/\[\[.*/g);
+
+		/*if (typeof this.commands !== 'undefined') {
+			eval(this.commands);
+		}*/
+		if (typeof this.conditional !== 'undefined') {
+			this.conditionalFunction = eval(this.conditional);
+			this.header = this.conditionalFunction();
+		}
+		else {
+			this.header = this.raw;
+		}
+
+		if (this.header.indexOf("[[") != -1) {
+			var result = this.header.match(reg);
+			if (result !== null) {
+
+				for (j = 0; j < result.length; j++) {
+					var decisions = "[" + result[j].replace('[[[[', '[[').replace(']]]]', ']]').replace(/\[\[/g, '{"').replace(/\]\]/g, '"},').replace(/\|/g, '":"') + "]";
+					decisions = decisions.replace(",]", "]")
+					decisions = JSON.parse(decisions);
+					for (d = 0; d < decisions.length; d++) {
+						var decision = decisions[d];
+						for (var property in decision) {
+							if (decision.hasOwnProperty(property)) {
+								var description = property;
+								var goto = decision[property];
+								this.decisions.push({ description: description, goto: goto })
+							}
+						}
+
+					}
+					//this.decisions.push(decisions)
+					this.header = this.header.replace(result[j], '');
+				}
+
+
+			}
+		}
+
+		this.header = this.header.replace(/(\r\n|\n|\r)/gm, ".").replace(/\.+/g, '. ').replace('?.', '? ').replace('!.', '! ').replace(/  /g, ' ').replace(/\\\. /g, '').replace("<>", '');
+		this.commands = "";
+
+		if (this.header.indexOf("{{set") !== -1) {
+			var logic = this.header.match(/{{set.*}}/g)
+			if (logic != null) {
+				for (m = 0; m < logic.length; m++) {
+					var newCommand = logic[m].replace("{{set", "").replace("}}", ";").replace(/to/g, "=").replace(/:/g, ";");
+					this.header = this.header.replace(/{{set.*}}/, "");
+					this.commands = this.commands + newCommand;
+				}
+
+			}
+		}
+
+		if (this.header.indexOf("<<set") !== -1) {
+			var logic = this.header.match(/<<set.*>>/g)
+			if (logic != null) {
+				for (m = 0; m < logic.length; m++) {
+					var newCommand = logic[m].replace("<<set", "").replace(">>", ";").replace(/to/g, "=").replace(/:/g, ";");
+					this.header = this.header.replace(/<<set.*>>/, "");
+					this.commands = this.commands + newCommand;
+				}
+	
+			}
+		}
+
+		if (typeof this.commands !== 'undefined') {
+			eval(this.commands);
+		}
+		this.header = this.header.replace(/\. *\./, '.')
+	}
+
+	currentNode.init();
+
 	positionVisited(currentNode);
 	drawCanvas();
 
