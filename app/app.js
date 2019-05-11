@@ -12,6 +12,24 @@ var newGame = function () {
 		window.nodes = data;
 
 
+		var initilize = "";
+
+		for (i = 0; i < nodes.length; i++) {
+			var match = nodes[i].raw.match(/<<set.*>>/)
+
+			if (match !== null && match.length > 0) {
+				match = match[0].replace(/:/g, ';');
+
+				match = match.replace(/ to.*;/, ' = null;')
+				match = match.replace(/ to.*>>/, ' = null;')
+				match = match.replace('<<set', '')
+				console.log(match)
+				initilize = initilize + match + ";"
+			}
+		}
+
+		eval(initilize)
+
 		setCurrentNode("start")
 
 		$('.map').show();
@@ -43,7 +61,7 @@ function setCurrentNode(name) {
 
 	}
 
-	currentNode.init =	 function () {
+	currentNode.init = function () {
 		var reg = new RegExp(/\[\[.*/g);
 
 		/*if (typeof this.commands !== 'undefined') {
@@ -107,7 +125,7 @@ function setCurrentNode(name) {
 					this.header = this.header.replace(/<<set.*>>/, "");
 					this.commands = this.commands + newCommand;
 				}
-	
+
 			}
 		}
 
