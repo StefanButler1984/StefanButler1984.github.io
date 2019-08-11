@@ -1,0 +1,67 @@
+[
+
+{"nodeId":"root","header":"Puny Human!!! Will you worship me?","images":["./app/images/corridor/Corridor_3_Left.png","./app/images/corridor/Corridor_Left.png","./app/images/corridor/Corridor_far_2.png","./app/images/corridor/Corridor_2.png","./app/images/corridor/Corridor_Far_Left_Right.png","./app/images/corridor/Corridor_3_Right.png","./app/images/corridor/Corridor_Right.png","./app/images/corridor/Corridor_far_right.png"],"decisions":{"0":"Deny Pax","1":"Worship Pax"}},
+
+{"nodeId":"deny pax","header":"You deny pax?","images":["./app/images/1.png","image2.png"],"decisions":{"0":{"description":"Deny pax","goto":"Deny pax2"},"1":"Worship Pax"}},
+
+{"nodeId":"Fap","header":"","images":["https://i.kym-cdn.com/entries/icons/original/000/002/276/fap-meme.jpg"],"decisions":{"0":"","1":{"description":"fap","goto":"worship pax"}}},
+
+{"nodeId":"worship pax","header":"I will eat your face off !!!","images":["./app/images/3.jpg"],"decisions":{"0":"Run","1":{"description":"Fight","goto":"Death"}}},
+
+{"nodeId":"error","header":"","images":["https://i.imgur.com/BskzumA.png"],"decisions":{"0":"","1":"Go Back"}},
+
+{"nodeId":"death","header":"You're dead. You should try again","images":["https://f4.bcbits.com/img/a3496871801_10.jpg"],"decisions":{"0":"","1":{"description":"Go Back","goto":"Worship pax2"}}},
+
+{"nodeId":"Run","header":"You run home","images":["https://i.redd.it/bfc0ybq2v3721.jpg"],"decisions":{"0":"Talk to dad","1":"Go in your room"}},
+
+{"nodeId":"Talk to dad","header":"Dad wants to talk about mum","images":["https://img3.looper.com/img/gallery/every-black-mirror-bandersnatch-ending-explained/throw-tea-on-your-computer-instead-of-yelling-at-your-dad-1546633274.jpg"],"decisions":{"0":"Kill dad","1":"Talk about mum"}},
+
+{"nodeId":"Go in your room","header":"Peace and quite.","images":["https://media.newyorker.com/photos/5c2e2ed683e65c2c790cef22/master/w_727,c_limit/Parkin-Bandersnatch_01.jpg"],"decisions":{"0":"Read a book","1":"Get on computer"}},
+
+{"nodeId":"Get on computer","header":"Who's there. Is there someone there? Give me a sign!","images":["https://cdn.vox-cdn.com/thumbor/yi-G2GonvDjU1tpKR-_YPa5pxM0=/0x0:3200x1680/1200x800/filters:focal(1344x584:1856x1096)/cdn.vox-cdn.com/uploads/chorus_image/image/62749310/bander.0.jpg"],"decisions":{"0":"netflix","1":"P.a.c.s."}},
+
+{"nodeId":"talk about mum","header":"dad yells at you and says it was all your fault!","images":["https://media1.popsugar-assets.com/files/thumbor/6HP_OwqjCK8_hXYRIu7nNcLtxl0/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2019/01/04/786/n/1922283/tmp_HmLNkQ_1ce5b73fbf7e1cc2_Screen_Shot_2019-01-04_at_12.51.56_PM.png"],"decisions":{"0":"","1":"go in your room"}},
+
+{"nodeId":"worship pax3","header":"I will eat your face off !!!","images":["https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/demon-1546429980.jpg"],"decisions":{"0":"Run","1":{"description":"Fight","goto":"kill pax"}}},
+
+{"nodeId":"death2","header":"You're dead. You should try again","images":["https://f4.bcbits.com/img/a3496871801_10.jpg"],"decisions":{"0":"","1":{"description":"Go Back","goto":"Worship pax3"}}},
+
+{"nodeId":"worship pax2","header":"I will eat your face off !!!","images":["https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/demon-1546429980.jpg"],"decisions":{"0":"Run","1":{"description":"Fight","goto":"Death2"}}},
+
+{"nodeId":"kill pax","header":"Wrong path, mate.","images":["https://vignette.wikia.nocookie.net/cea3083a-0e61-45a9-a700-2e21cbb39d79/scale-to-width-down/800"],"decisions":{"0":"","1":{"description":"Go to purgatory","goto":"Death eternal"}}},
+
+{"nodeId":"death eternal","header":"You're dead. You cannot try again. Enjoy eternity","images":["https://f4.bcbits.com/img/a3496871801_10.jpg"],"decisions":{"0":"","1":{"description":"Go To purgatory","goto":"Kill pax"}}},
+
+{"nodeId":"deny pax2","header":"You deny pax?","images":["https://cdn.vox-cdn.com/thumbor/ipkTOlSme5tR9CQptSw9Tzn3rEM=/0x0:1440x900/1200x0/filters:focal(0x0:1440x900):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/13654516/Screen_Shot_2018_12_28_at_10.12.55_AM.png","image2.png"],"decisions":{"0":{"description":"Deny pax","goto":"Deny pax3"},"1":"Worship Pax"}},
+
+{"nodeId":"deny pax3","header":"You deny pax?","images":["https://cdn.vox-cdn.com/thumbor/ipkTOlSme5tR9CQptSw9Tzn3rEM=/0x0:1440x900/1200x0/filters:focal(0x0:1440x900):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/13654516/Screen_Shot_2018_12_28_at_10.12.55_AM.png","image2.png"],"decisions":{"0":{"description":"Deny pax","goto":"Deny pax4"},"1":"Worship Pax"}},
+
+{"nodeId":"deny pax4","header":"You cannot deny Pax!!!","images":["https://cdn.vox-cdn.com/thumbor/ipkTOlSme5tR9CQptSw9Tzn3rEM=/0x0:1440x900/1200x0/filters:focal(0x0:1440x900):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/13654516/Screen_Shot_2018_12_28_at_10.12.55_AM.png","image2.png"],"decisions":{"0":{"description":"Deny pax","goto":"Death"},"1":"Worship Pax"}},
+
+{"nodeId":"Netflix","header":"let's watch some friends!","images":["https://ocsaledger.com/wp-content/uploads/2018/12/Friends-1.jpg"],"decisions":{"0":{"description":"dad likes friends","goto":"Talk to dad"},"1":"go back"}},
+
+{"nodeId":"Kill dad","header":"choose your weapon","images":["https://i.imgur.com/tJXmpvB.png"],"decisions":{"0":"ashtray","1":"knife"}},
+
+{"nodeId":"Ashtray","header":"now what do I do? What do I do?","images":["https://usercontent1.hubstatic.com/14345070_f520.jpg"],"decisions":{"0":"chop up dad","1":"bury the body"}},
+
+{"nodeId":"chop up dad","header":"go on. Do it already. ","images":["https://i0.wp.com/twinfinite.net/wp-content/uploads/2019/01/black-mirror-5.jpg?resize=600%2C351&amp;ssl=1"],"decisions":{"0":"","1":"do it"}},
+
+{"nodeId":"do it","header":"how deep can this rabbit hole go?","images":["https://pa1.narvii.com/6133/f55635a5dc57c27c3e3a974ea4fdf06e4e972785_hq.gif"],"decisions":{"0":"","1":"deeper"}},
+
+{"nodeId":"deeper","header":"rabbit?","images":["https://i.giphy.com/media/tkHRwiOuo35QI/giphy.gif"],"decisions":{"0":"","1":"deeper and deeper"}},
+
+{"nodeId":"deeper and deeper","header":"how deep?","images":["https://i.giphy.com/media/IumYlHfSy6Rfq/giphy.gif"],"decisions":{"0":"","1":"deeper and deeper still"}},
+
+{"nodeId":"deeper and deeper still","header":"deep","images":["https://i.giphy.com/media/IumYlHfSy6Rfq/giphy.gif"],"decisions":{"0":"","1":"how long have I waited for you?"}},
+
+{"nodeId":"how long have I waited for you?","header":"deep","images":["https://lh3.googleusercontent.com/c5lGKr3JxKnUQVeAKzRO3FMSVyuhEeSYOEstu3IIupxXznj2i4kb875b3vZL2nBzCqsthfm7hjDxhDg=w400-h237-no"],"decisions":{"0":"","1":"?"}},
+
+{"nodeId":"?","header":"eye see you","images":["https://i.giphy.com/media/11QXJ46jOsxA9a/giphy.gif"],"decisions":{"0":"","1":"??"}},
+
+{"nodeId":"g??","header":"you can't deny me","images":["https://data.whicdn.com/images/241718785/original.gif"],"decisions":{"0":"worship pax","1":"burn it with fire!!!"}},
+
+{"nodeId":"??","header":"you can't deny me","images":["https://data.whicdn.com/images/241718785/original.gif"],"decisions":{"0":"worship her","1":"burn it with fire!!!"}},
+
+{"nodeId":"Burn it with fire!!!","header":"it was all a dream! What a nightmare!!!","images":["https://media.newyorker.com/photos/5c2e2ed683e65c2c790cef22/master/w_727,c_limit/Parkin-Bandersnatch_01.jpg"],"decisions":{"0":"Read a book","1":"Get on computer"}},
+
+{"nodeId":"Worship her","header":"a dream? I feel... different","images":["https://media.newyorker.com/photos/5c2e2ed683e65c2c790cef22/master/w_727,c_limit/Parkin-Bandersnatch_01.jpg"],"decisions":{"0":"Read a book","1":"Get on computer"}}]
