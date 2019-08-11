@@ -3,6 +3,13 @@ var root = null;
 
 
 
+document.addEventListener('deviceready', function(){	
+	screen.orientation.lock('landscape');	
+
+
+
+	 }, false);
+
 var newGame = function () {
 	$('.inventory').show();
 	audioToggle();
