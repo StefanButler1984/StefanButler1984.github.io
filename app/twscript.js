@@ -25,7 +25,7 @@ for (i = 0; i < $('tw-passagedata').length; i++) {
 	var image_re = /\n.*?\.png/g
 	var image_match = data.match(image_re)
 	if(typeof image_match !== 'undefined' && image_match !== null){
-		newItem.images = image_match.map(function(j){return j.replace("\n", "./app/PNG/")});
+		newItem.images = image_match.map(function(j){newItem.raw = newItem.raw.replace(j, ""); return  j.replace("\n", "./app/PNG/")});
 	}
 
 	newItem.init =  function () {
