@@ -11,12 +11,6 @@ var newGame = function () {
 	$.get("./app/data/data.json", function (data) {
 		window.nodes = data;
 
-		try{
-			window.nodes = JSON.parse(data);
-
-		}
-		catch(ex){
-		}
 
 		var initilize = "";
 
