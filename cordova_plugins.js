@@ -16,8 +16,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     }
   ];
   module.exports.metadata = {
-    "cordova-plugin-whitelist": "1.3.4",
     "es6-promise-plugin": "4.2.2",
-    "cordova-plugin-screen-orientation": "3.0.2"
+    "cordova-plugin-screen-orientation": "3.0.2",
+    "cordova-plugin-whitelist": "1.3.4"
   };
 });

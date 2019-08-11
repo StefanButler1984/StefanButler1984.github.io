@@ -2,7 +2,11 @@ var nodes = [];
 var root = null;
 
 
+document.addEventListener('deviceready', function(){
+        screen.orientation.lock('landscape');
 
+
+        }, false);
 var newGame = function () {
 	$('.inventory').show();
 	audioToggle();
@@ -10,8 +14,13 @@ var newGame = function () {
 
 	$.get("./app/data/data.json", function (data) {
 		window.nodes = data;
-try{		window.nodes = JSON.parse(data);
-}catch(ex){}
+
+		try{
+			window.nodes = JSON.parse(data);
+
+		}
+		catch(ex){
+		}
 
 		var initilize = "";
 
