@@ -1,137 +1,76 @@
 function splitMulti(str, tokens) {
-	var tempChar = tokens[0]; // We can use the first token as a temporary join character
-	for (var i = 1; i < tokens.length; i++) {
-		str = str.split(tokens[i]).join(tempChar);
-	}
-	str = str.split(tempChar);
-	return str;
+  var tempChar = tokens[0]; // We can use the first token as a temporary join character
+  for (var i = 1; i < tokens.length; i++) {
+    str = str.split(tokens[i]).join(tempChar);
+  }
+  str = str.split(tempChar);
+  return str;
 }
 
-items = []
+items = [];
 for (i = 0; i < $('tw-passagedata').length; i++) {
-	var elm = $('tw-passagedata')[i];
-	var newItem = {};
-	newItem.nodeId = elm.attributes.name.textContent;
-	newItem.map = { "x": 27, "y": 19 };
-	/*newItem.images = [
+  var elm = $('tw-passagedata')[i];
+  var newItem = {};
+  newItem.nodeId = elm.attributes.name.textContent;
+  newItem.map = { name: 'start', x: 39, y: 76, color: 'yellow' } //start;
+  /*newItem.images = [
 		"./app/images/corridor/2_far.png",
 		"./app/images/corridor/2_close.png"
 	];*/
-	newItem.images = [];
-	var data = elm.innerText;
-	newItem.raw = data;
-	newItem.rawer = elm;
-	newItem.decisions = [];
-	var image_re = /\n.*?\.png/g
-	var image_match = data.match(image_re)
-	if(typeof image_match !== 'undefined' && image_match !== null){
-		newItem.images = image_match.map(function(j){newItem.raw = newItem.raw.replace(j, ""); return  j.replace("\n", "./app/PNG/")});
+  newItem.images = [];
+  var data = elm.innerText;
+  newItem.raw = data;
+  newItem.rawer = elm;
+  newItem.decisions = [];
+  var image_re = /\n.*?\.png/g;
+  var image_match = data.match(image_re);
+  if (typeof image_match !== 'undefined' && image_match !== null) {
+    newItem.images = image_match.map(function(j) {
+	  newItem.raw = newItem.raw.replace(j, '');
+	  j=j.replace(/\n/g, '');
+
+      return './app/PNG/'+j;
+    });
+  }
+
+  var map_re = /\n.*?\.map/g;
+  var map_match = data.match(map_re);
+  if (typeof map_match !== 'undefined' && image_match !== null) {
+    newItem.mapname = map_match.map(
+      function(j) {
+        newItem.raw = newItem.raw.replace(j, '');
+		return j.replace(/\n/g, '').replace('.map', '');
 	}
+    );
+  }
 
-	newItem.init =  function () {
+  if (data.indexOf('<<set') !== -1) {
+    var logic = data.match(/<<set.*>>/g);
+    if (logic != null) {
+      for (m = 0; m < logic.length; m++) {
+        var newCommand = logic[m].replace('<<set', '{{set').replace('>>', '}}');
+        data = data.replace(/<<set.*>>/, newCommand);
+      }
+    }
+  }
 
-		var reg = new RegExp(/\[\[.*/g);
+  if (data.indexOf('<<if') !== -1) {
+    var firstBit = data.substr(0, data.indexOf('<<if'));
+    data = data.splice(0, data.indexOf('<<if'));
 
-		/*if (typeof this.commands !== 'undefined') {
-			eval(this.commands);
-		}*/
-		if (typeof this.conditional !== 'undefined') {
-			this.conditionalFunction = eval(this.conditional);
-			this.header = this.conditionalFunction();
-		}
-		else {
-			this.header = this.raw;
-		}
+    newItem.conditional =
+      'this.conditional = function(){ try{' +
+      data
+        .replace('<<endif>>', '')
+        .replace('<<else>>', '`;} else { return `' + firstBit)
+        .replace(/<<else if/g, '`; } else if(')
+        .replace('<<if', 'if(')
+        .replace(/>>/g, ') { return `' + firstBit)
+        .replace(/ is /g, '==') +
+      '`} }  catch(ex){console.log(ex); return ex.toString();}  } ';
+  }
 
-		if (this.header.indexOf("[[") != -1) {
-			var result = this.header.match(reg);
-			if (result !== null) {
-
-				for (j = 0; j < result.length; j++) {
-					var decisions = "[" + result[j].replace('[[[[', '[[').replace(']]]]', ']]').replace(/\[\[/g, '{"').replace(/\]\]/g, '"},').replace(/\|/g, '":"') + "]";
-					decisions = decisions.replace(",]", "]")
-					decisions = JSON.parse(decisions);
-					for (d = 0; d < decisions.length; d++) {
-						var decision = decisions[d];
-						for (var property in decision) {
-							if (decision.hasOwnProperty(property)) {
-								var description = property;
-								var goto = decision[property];
-								this.decisions.push({ description: description, goto: goto })
-							}
-						}
-
-					}
-					//this.decisions.push(decisions)
-					this.header = this.header.replace(result[j], '');
-				}
-
-
-			}
-		}
-
-		this.header = this.header.replace(/(\r\n|\n|\r)/gm, ".").replace(/\.+/g, '. ').replace('?.', '? ').replace('!.', '! ').replace(/  /g, ' ').replace(/\\\. /g, '').replace("<>", '');
-		this.commands = "";
-
-		if (this.header.indexOf("{{set") !== -1) {
-			var logic = this.header.match(/{{set.*}}/g)
-			if (logic != null) {
-				for (m = 0; m < logic.length; m++) {
-					var newCommand = logic[m].replace("{{set", "").replace("}}", ";").replace(/to/g, "=").replace(/:/g, ";");
-					this.header = this.header.replace(/{{set.*}}/, "");
-					this.commands = this.commands + newCommand;
-				}
-
-			}
-		}
-
-		if (this.header.indexOf("<<set") !== -1) {
-			var logic = this.header.match(/<<set.*>>/g)
-			if (logic != null) {
-				for (m = 0; m < logic.length; m++) {
-					var newCommand = logic[m].replace("<<set", "").replace(">>", ";").replace(/to/g, "=").replace(/:/g, ";");
-					this.header = this.header.replace(/<<set.*>>/, "");
-					this.commands = this.commands + newCommand;
-				}
-	
-			}
-		}
-
-		if (typeof this.commands !== 'undefined') {
-			eval(this.commands);
-		}
-		this.header = this.header.replace(/\. *\./, '.')
-	}
-
-
-
-
-
-
-	/* end init */
-
-	if (data.indexOf("<<set") !== -1) {
-		var logic = data.match(/<<set.*>>/g)
-		if (logic != null) {
-			for (m = 0; m < logic.length; m++) {
-				var newCommand = logic[m].replace("<<set", "{{set").replace(">>", "}}")
-				data = data.replace(/<<set.*>>/, newCommand);
-			}
-
-		}
-	}
-
-	if (data.indexOf("<<if") !== -1) {
-
-		var firstBit = data.substr(0, data.indexOf("<<if"));
-		data = data.splice(0, data.indexOf("<<if"));
-
-		newItem.conditional = "this.conditional = function(){ try{" + data.replace("<<endif>>", "").replace("<<else>>", "`;} else { return `" + firstBit).replace(/<<else if/g, "`; } else if(").replace("<<if", "if(").replace(/>>/g, ") { return `" + firstBit).replace(/ is /g, '==') + "`} }  catch(ex){console.log(ex); return ex.toString();}  } "
-
-
-	}
-
-	/*
+  /*
 
 	if (data.indexOf("<<set") !== -1) {
 		var logic = data.match(/<<set.*>>/g)
@@ -149,15 +88,14 @@ for (i = 0; i < $('tw-passagedata').length; i++) {
 	}
 	*/
 
-	items.push(newItem)
-
-
-
-
+ 
+  items.push(newItem);
 }
 
-
-
+//to test copy the entire init function from app.js and paste it here
+//so you have newItem.init = function(){ ... }
+//you can then loop over all the nodes and execute init to see if any errors occur
+//since init depends on map you need to paste that into the console
 /*
 
 for(q=0; q<items.length; q++){
@@ -167,5 +105,4 @@ items[q].init()
 
 */
 
-
-k = JSON.stringify(items)
+k = JSON.stringify(items);

@@ -62,6 +62,9 @@ function setCurrentNode(name) {
 	}
 
 	currentNode.init = function () {
+		if(typeof this.mapname !== 'undefined' && this.mapname.length > 0){
+			this.map = getMapPositionByName(this.mapname[0]);
+		  }
 		var reg = new RegExp(/\[\[.*/g);
 
 		/*if (typeof this.commands !== 'undefined') {
